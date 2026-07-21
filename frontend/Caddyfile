@@ -1,0 +1,23 @@
+# Serves the built SPA and proxies the API to the backend container.
+# SITE_ADDRESS defaults to :80 (HTTP). Set it to a domain (e.g. app.example.com)
+# and Caddy will obtain HTTPS automatically.
+{$SITE_ADDRESS::80} {
+	encode gzip zstd
+
+	# API → backend service.
+	handle /api/* {
+		reverse_proxy backend:3001
+	}
+
+	# Uploaded telemetry static files (served by the backend).
+	handle /uploads/* {
+		reverse_proxy backend:3001
+	}
+
+	# SPA: serve files, fall back to index.html for client-side routes.
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}

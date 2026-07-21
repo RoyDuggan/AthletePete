@@ -1,0 +1,177 @@
+// Virtual Pete — production data model (Phase 0 foundation).
+//
+// Self-hosted auth (email + password), PostgreSQL. Free tier: 30-day trial +
+// usage credits, max 100 sessions and 2 karts. Billing/Stripe fields are kept
+// minimal here and expanded in the billing phase.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Plan {
+  FREE
+  DRIVER
+  TEAM
+  COACH
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  fullName     String?
+  emailVerified Boolean @default(false)
+
+  // Grants access to the Driver Setup AI-framing prompt editor. Set only by a
+  // site admin via direct DB access — not user-configurable.
+  driverAdmin  Boolean @default(false)
+
+  // Free-tier entitlements.
+  plan             Plan     @default(FREE)
+  trialEndsAt      DateTime // set to createdAt + 30 days at registration
+  creditsRemaining Int      @default(20)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  karts        Kart[]
+  sessions     Session[]
+  creditEvents CreditEvent[]
+  subscription Subscription?
+  tokens       AuthToken[]
+
+  @@map("users")
+}
+
+model Kart {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  name      String
+  chassis   String?
+  engine    String?
+  notes     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sessions       Session[]
+  configurations KartConfiguration[]
+
+  @@index([userId])
+  @@map("karts")
+}
+
+// A saved setup snapshot for a kart — how it was configured for given
+// conditions. A kart accumulates many of these across a season.
+model KartConfiguration {
+  id     String @id @default(cuid())
+  kartId String
+  kart   Kart   @relation(fields: [kartId], references: [id], onDelete: Cascade)
+
+  name String // label, e.g. "PFI — Round 3 (Wet)"
+
+  // Free-text setup attributes.
+  chassis    String?
+  axle       String?
+  rideHeight String?
+  tyres      String?
+  engine     String?
+
+  // Track width (mm).
+  trackWidthFront Int?
+  trackWidthRear  Int?
+
+  // Gearing (sprocket teeth).
+  gearFront Int?
+  gearRear  Int?
+
+  // Weather conditions.
+  airTempC         Float?
+  trackTempC       Float?
+  weatherCondition String? // Dry | Damp | Wet | Overcast | ...
+
+  notes String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([kartId])
+  @@map("kart_configurations")
+}
+
+model Session {
+  id     String  @id @default(cuid())
+  userId String
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  kartId String?
+  kart   Kart?   @relation(fields: [kartId], references: [id], onDelete: SetNull)
+
+  name           String
+  track          String?
+  // Stored telemetry file reference (volume path or object key).
+  storageKey     String
+  originalName   String?
+  sizeBytes      Int?
+  lapCount       Int?
+  trackLengthM   Float?
+
+  uploadedAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+// Append-only ledger of credit grants/spends for audit.
+model CreditEvent {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  delta     Int      // -1 per analysis run, positive on grant
+  reason    String
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("credit_events")
+}
+
+model Subscription {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Stripe fields are populated in the billing phase.
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  status               String   @default("inactive") // active | past_due | canceled | inactive
+  currentPeriodEnd     DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("subscriptions")
+}
+
+// Email-verification and password-reset tokens.
+model AuthToken {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type      String   // "verify_email" | "reset_password"
+  tokenHash String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("auth_tokens")
+}

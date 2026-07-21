@@ -1,0 +1,23 @@
+node_modules/
+.idea/
+dist/
+build/
+.DS_Store
+.env
+**/.env
+backend/node_modules/
+frontend/node_modules/
+backend/uploads/*
+backend/uploads/.gitkeep
+_restructure_backup/
+# Ignore all Excel files in tests directory
+**/tests/*.xlsx
+
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+backend/data/*
+!backend/data/.gitkeep
+
+# Local backup archives (never commit these).
+backups/

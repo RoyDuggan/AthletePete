@@ -1,0 +1,5 @@
+/* Tailwind utilities for the new mobile-first landing page. Preflight is
+   disabled in tailwind.config.js so this does not reset the rest of the app. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

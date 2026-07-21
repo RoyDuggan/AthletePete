@@ -1,0 +1,803 @@
+/* =========================
+   GLOBAL LAYOUT
+========================= */
+/* Root of the rendered dashboard. Clip horizontal overflow so the legacy
+   fixed-width internals (zone-card maps, wide split table) can never push the
+   whole page — and the sticky app header — wider than a phone screen. Inner
+   scrollers (e.g. .split-table-wrap) keep their own horizontal scroll. */
+.advisory-container {
+    overflow-x: clip;
+}
+
+.advisory-dashboard {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+}
+
+.advisory-dashboard h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #1f2937;
+}
+
+/* =========================
+   CARD SYSTEM
+========================= */
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 18px;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: #111827;
+}
+
+/* =========================
+   TEXT / LABELS
+========================= */
+.card p {
+    margin: 4px 0;
+    color: #374151;
+    font-size: 14px;
+}
+
+.card strong {
+    color: #111827;
+}
+
+/* =========================
+   SESSION OVERVIEW
+========================= */
+.session-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 20px;
+}
+
+/* =========================
+   LAP COMPARISON
+========================= */
+.lap-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 20px;
+}
+
+.lap-highlight {
+    font-weight: bold;
+    color: #2563eb;
+}
+
+/* =========================
+   FEATURE ZONES
+========================= */
+.zone-row {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 12px;
+    margin-top: 12px;
+}
+
+.zone-row:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.zone-title {
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.zone-distance {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* =========================
+   TRACK STRIP (visualisation)
+========================= */
+.track-strip {
+    position: relative;
+    height: 36px;
+    margin: 18px 0 20px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #e5e7eb, #d1d5db);
+    border: 1px solid #cbd5e1;
+}
+
+.track-marker {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.track-marker.gain {
+    background: #16a34a;
+}
+
+.track-marker.loss {
+    background: #dc2626;
+}
+
+.track-marker.neutral {
+    background: #6b7280;
+}
+
+/* =========================
+   SETUP ADVISORY
+========================= */
+.setup-box {
+    background: #f9fafb;
+    border-left: 4px solid #2563eb;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* =========================
+   ADVISORY STATES (future use)
+========================= */
+.advisory-positive {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.advisory-negative {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.advisory-neutral {
+    color: #6b7280;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .session-grid,
+    .lap-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .advisory-dashboard {
+        padding: 16px;
+    }
+}
+
+.track-map-card {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.track-map-header,
+.track-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.4rem;
+}
+
+.mini-track-map {
+    position: relative;
+    height: 48px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #e5e7eb, #f3f4f6);
+    border: 1px solid #d1d5db;
+    overflow: hidden;
+}
+
+.track-zone {
+    position: absolute;
+    top: 8px;
+    height: 32px;
+    min-width: 28px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.track-zone.gain {
+    background: #16a34a;
+}
+
+.track-zone.loss {
+    background: #dc2626;
+}
+
+.track-zone.neutral {
+    background: #6b7280;
+}
+
+/* =========================
+   COACHING INSIGHT CARDS
+========================= */
+.insight-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 18px 0;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.insight-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #111827;
+    font-size: 18px;
+}
+
+.insight-card p {
+    margin: 8px 0;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.insight-card.high {
+    border-left: 8px solid #e53935;
+}
+
+.insight-card.medium {
+    border-left: 8px solid #f9a825;
+}
+
+.insight-card.low {
+    border-left: 8px solid #43a047;
+}
+
+.insight-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+}
+
+.insight-meta span {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #374151;
+}
+
+.insight-evidence {
+    margin-top: 12px;
+}
+
+.insight-evidence strong {
+    color: #111827;
+}
+
+.insight-evidence ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+}
+
+.insight-evidence li {
+    margin-bottom: 10px;
+    color: #374151;
+    line-height: 1.4;
+}
+
+.evidence-sub {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.recommendation {
+    margin-top: 14px !important;
+    padding: 10px 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #111827 !important;
+}
+
+/* =========================
+   AI INTERPRETATION
+========================= */
+.ai-interpretation-sub {
+    color: #6b7280 !important;
+    font-size: 13px !important;
+    margin-top: 0 !important;
+}
+
+.ai-interpretation-button {
+    margin: 8px 0 4px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.ai-interpretation-button:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+.ai-interpretation-button:disabled {
+    background: #93c5fd;
+    cursor: default;
+}
+
+.ai-interpretation-text {
+    margin-top: 14px !important;
+    padding: 12px 14px;
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    border-radius: 8px;
+    line-height: 1.6 !important;
+    white-space: pre-wrap;
+}
+/* =========================
+   SPEED VS DISTANCE CHART
+========================= */
+.speed-chart-legend {
+    justify-content: flex-start;
+    margin-bottom: 8px;
+}
+
+.speed-chart-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.speed-chart-axis {
+    font-size: 11px;
+    fill: #6b7280;
+}
+
+.speed-chart-axis-title {
+    font-size: 11px;
+    fill: #374151;
+    font-weight: 700;
+}
+
+.speed-chart-zone-number {
+    font-size: 10px;
+    font-weight: 700;
+    fill: #16a34a;
+    /* White halo so the number stays legible over the speed traces. */
+    paint-order: stroke;
+    stroke: #ffffff;
+    stroke-width: 2.5px;
+    stroke-linejoin: round;
+}
+
+/* =========================
+   ZONE MAP EDITOR
+========================= */
+.zone-map-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.zone-map-button {
+    padding: 8px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.zone-map-button:hover:not(:disabled) {
+    background: #f3f4f6;
+}
+
+.zone-map-button.primary {
+    background: #16a34a;
+    border-color: #16a34a;
+    color: #fff;
+}
+
+.zone-map-button.primary:hover:not(:disabled) {
+    background: #15803d;
+}
+
+.zone-map-button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.zone-map-name-input {
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    min-width: 180px;
+}
+
+.zone-map-hint {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.upload-file-list {
+    margin: 10px 0;
+    padding-left: 18px;
+    font-size: 13px;
+    color: #374151;
+}
+
+.upload-file-list li {
+    margin: 2px 0;
+}
+
+/* =========================
+   ZONE AI SUMMARY + PROMPT
+========================= */
+.zone-ai-summary {
+    /* Spans the whole card, wrapping below the content + map columns. */
+    flex: 1 1 100%;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px dashed #e5e7eb;
+}
+
+.zone-ai-summary-button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.zone-ai-summary-button:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+.zone-ai-summary-button:disabled {
+    background: #93c5fd;
+    cursor: default;
+}
+
+.zone-ai-summary-hint {
+    margin: 8px 0 0;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.zone-ai-summary-text {
+    margin-top: 12px !important;
+    padding: 12px 14px;
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6 !important;
+    white-space: pre-wrap;
+}
+
+.zone-prompt-editor {
+    margin: 0 0 18px;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.zone-prompt-editor > summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    color: #374151;
+}
+
+.zone-prompt-editor-hint {
+    margin: 10px 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.zone-prompt-editor-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.zone-prompt-editor-toolbar {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.zone-prompt-editor-status {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* =========================
+   LAP COMPARISON SELECTOR
+========================= */
+.lap-selector-row {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.lap-selector-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #374151;
+}
+
+.lap-selector-field select {
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+    min-width: 220px;
+}
+
+.lap-selector-vs {
+    padding-bottom: 10px;
+    color: #6b7280;
+    font-weight: 700;
+}
+
+.lap-selector-status {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* =========================
+   FEATURE ZONE CARDS + MINIMAP
+========================= */
+.zone-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 18px;
+}
+
+.zone-card {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.zone-card.gain {
+    border-left: 8px solid #16a34a;
+}
+
+.zone-card.loss {
+    border-left: 8px solid #dc2626;
+}
+
+.zone-card.neutral {
+    border-left: 8px solid #6b7280;
+}
+
+.zone-card-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.zone-card-content h3 {
+    margin-top: 0;
+}
+
+.zone-card-map {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.zone-gplot {
+    display: block;
+}
+
+.zone-gplot--empty {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.zone-gplot-axis {
+    font-size: 8px;
+    fill: #9ca3af;
+}
+
+.zone-gplot-scale {
+    font-size: 9px;
+    fill: #6b7280;
+    font-weight: 700;
+}
+
+.zone-map-caption {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.zone-speed-chart {
+    width: 200px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.zone-gplot-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    justify-content: center;
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.zone-gplot-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.zone-gplot-legend .swatch {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.zone-gplot-legend .swatch.subject {
+    background: #2563eb;
+}
+
+.zone-gplot-legend .swatch.reference {
+    background: #f59e0b;
+}
+
+.zone-minimap {
+    display: block;
+}
+
+.zone-minimap--empty {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 12px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .zone-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zone-card {
+        flex-direction: column;
+    }
+
+    .zone-card-map {
+        align-self: stretch;
+    }
+}
+
+/* =========================
+   FIXED DISTANCE SPLIT TABLE
+========================= */
+.split-table-wrap {
+    margin-top: 16px;
+    overflow-x: auto;
+}
+
+.split-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.split-table th,
+.split-table td {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 8px 10px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.split-table th:first-child,
+.split-table td:first-child,
+.split-table th:last-child,
+.split-table td:last-child {
+    text-align: left;
+}
+
+.split-table tbody tr.gain td:last-child,
+.split-table tbody tr.gain td:nth-child(6) {
+    color: #15803d;
+    font-weight: 700;
+}
+
+.split-table tbody tr.loss td:last-child,
+.split-table tbody tr.loss td:nth-child(6) {
+    color: #b91c1c;
+    font-weight: 700;
+}
+
+.split-table tbody tr.neutral td:last-child,
+.split-table tbody tr.neutral td:nth-child(6) {
+    color: #6b7280;
+}
