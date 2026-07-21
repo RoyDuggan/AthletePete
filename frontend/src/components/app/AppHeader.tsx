@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
-import logoUrl from "../../assets/logo.svg";
+import { DRWordmark } from "../brand/DRLogo";
 import { useAuth } from "../../context/AuthContext";
 import { container, focusRing } from "../marketing/ui";
 import { type Feature, getTier, hasFeature, TIER_LABEL } from "../../lib/tiers";
@@ -47,14 +47,14 @@ const AppHeader: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 bg-ink shadow-md">
       {/* Top bar: logo + account + sign out */}
-      <div className="bg-brand">
+      <div className="border-b border-hair bg-panel">
         <div className={`${container} flex h-14 items-center justify-between lg:h-16`}>
           <Link
             to="/app/dashboard"
             className={`flex items-center ${focusRing}`}
-            aria-label="DR Performance dashboard"
+            aria-label="D+R Athletic Development dashboard"
           >
-            <img src={logoUrl} alt="DR Performance" className="h-9 w-auto lg:h-11" />
+            <DRWordmark />
           </Link>
 
           <div className="flex items-center gap-3">

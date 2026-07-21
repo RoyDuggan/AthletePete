@@ -7,7 +7,7 @@
  * billing, Anthropic for AI coaching); update if that changes.
  */
 export const LEGAL = {
-  siteName: "DR Performance",
+  siteName: "D+R Athletic Development",
   /** Legal / trading name of the business operating the service. */
   company: "[COMPANY / TRADING NAME]",
   /** e.g. "a sole trader" or "a company registered in England & Wales". */

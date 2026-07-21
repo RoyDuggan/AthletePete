@@ -3,30 +3,27 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../context/AuthContext";
 import { authInput, authLabel, authError, focusRing } from "../components/marketing/ui";
+import { DRWordmark } from "../components/brand/DRLogo";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const HERO_BG: React.CSSProperties = {
   backgroundImage:
-    "linear-gradient(90deg, rgba(8,12,17,.96) 0%, rgba(8,12,17,.82) 45%, rgba(8,12,17,.45) 78%), url('/assets/brand/hero-athlete-1600x900.webp')",
+    "linear-gradient(90deg, rgba(10,12,16,.97) 0%, rgba(10,12,16,.86) 45%, rgba(10,12,16,.5) 80%), url('/assets/brand/hero-athlete-1600x900.webp')",
   backgroundSize: "cover",
   backgroundPosition: "center",
 };
 
 /**
- * Split-screen home: DR Performance marketing (left, over the athlete hero) and
- * account registration (right). The whole home page is the sign-up funnel.
+ * Split-screen home: D+R Athletic Development marketing (left, over the athlete
+ * hero) and account registration (right). The whole home page is the sign-up
+ * funnel.
  */
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const { register } = useAuth();
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    agree: false,
-  });
+  const [form, setForm] = useState({ name: "", email: "", password: "", agree: false });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
 
@@ -60,19 +57,15 @@ const LandingPage: React.FC = () => {
         className="relative flex flex-col justify-between px-8 py-10 md:px-14 lg:min-h-screen"
         style={HERO_BG}
       >
-        <img
-          src="/assets/brand/dr-performance-logo-dark.svg"
-          alt="DR Performance — Athlete Training and Development"
-          className="h-12 w-auto md:h-14"
-        />
+        <DRWordmark />
 
         <div className="max-w-lg py-10 lg:py-0">
-          <p className="text-sm font-bold uppercase tracking-widest text-hero-blue">
-            Individualised training. Measurable progress.
+          <p className="font-oswald text-xs font-semibold uppercase tracking-[0.24em] text-brand">
+            Individualised training · Measurable progress
           </p>
-          <h1 className="mt-4 text-4xl font-extrabold uppercase leading-tight tracking-wide text-white md:text-6xl">
+          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.02] text-white md:text-6xl">
             Better athletes.{" "}
-            <span className="text-hero-blue">Stronger futures.</span>
+            <span className="text-brand">Stronger futures.</span>
           </h1>
           <p className="mt-5 max-w-md text-base leading-relaxed text-gray-300">
             Science-led coaching for athletes who want to perform at their best.
@@ -87,22 +80,22 @@ const LandingPage: React.FC = () => {
               "Built around your sport, level and goals",
             ].map((f) => (
               <li key={f} className="flex items-center gap-3">
-                <span className="text-hero-blue">▸</span>
+                <span className="text-brand">▸</span>
                 {f}
               </li>
             ))}
           </ul>
         </div>
 
-        <p className="text-xs text-gray-500">
-          © DR Performance — Athlete Training and Development
+        <p className="font-oswald text-[10px] uppercase tracking-[0.2em] text-muted">
+          © D+R Athletic Development
         </p>
       </div>
 
       {/* ---- Right: register ---- */}
       <div className="flex items-center justify-center px-6 py-12 md:px-12">
         <div className="w-full max-w-md">
-          <h2 className="text-2xl font-extrabold uppercase tracking-wide text-white">
+          <h2 className="font-display text-3xl font-bold text-white">
             Create your account
           </h2>
           <p className="mt-2 text-sm text-gray-400">
@@ -165,11 +158,11 @@ const LandingPage: React.FC = () => {
               />
               <span>
                 I agree to the{" "}
-                <Link to="/terms" className="font-semibold text-hero-blue hover:underline">
+                <Link to="/terms" className="font-semibold text-brand hover:underline">
                   Terms
                 </Link>{" "}
                 and{" "}
-                <Link to="/privacy" className="font-semibold text-hero-blue hover:underline">
+                <Link to="/privacy" className="font-semibold text-brand hover:underline">
                   Privacy Policy
                 </Link>
                 .
@@ -180,7 +173,7 @@ const LandingPage: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className={`flex h-12 w-full items-center justify-center rounded-3xl bg-brand text-sm font-bold uppercase tracking-wide text-white transition duration-300 hover:-translate-y-0.5 hover:bg-hero-blue disabled:cursor-not-allowed disabled:opacity-60 ${focusRing}`}
+              className={`flex h-12 w-full items-center justify-center rounded-xl bg-brand text-sm font-bold uppercase tracking-wide text-white transition duration-300 hover:-translate-y-0.5 hover:bg-hero-blue disabled:cursor-not-allowed disabled:opacity-60 ${focusRing}`}
             >
               {submitting ? "Creating account…" : "Create account"}
             </button>
@@ -188,7 +181,7 @@ const LandingPage: React.FC = () => {
 
           <p className="mt-6 text-center text-sm text-gray-400">
             Already have an account?{" "}
-            <Link to="/sign-in" className="font-semibold text-hero-blue hover:underline">
+            <Link to="/sign-in" className="font-semibold text-brand hover:underline">
               Sign in
             </Link>
           </p>

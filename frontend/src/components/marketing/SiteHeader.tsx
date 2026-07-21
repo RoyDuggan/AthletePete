@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
-import logoUrl from "../../assets/logo.svg";
+import { DRWordmark } from "../brand/DRLogo";
 import { useAuth } from "../../context/AuthContext";
 import { container, focusRing } from "./ui";
 
@@ -29,14 +29,14 @@ const SiteHeader: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-brand shadow-md">
+    <header className="sticky top-0 z-50 border-b border-hair bg-panel shadow-md">
       <div className={`${container} flex h-14 items-center justify-between lg:h-16`}>
         <Link
           to="/"
           className={`flex items-center ${focusRing}`}
-          aria-label="DR Performance home"
+          aria-label="D+R Athletic Development home"
         >
-          <img src={logoUrl} alt="DR Performance" className="h-9 w-auto lg:h-11" />
+          <DRWordmark />
         </Link>
 
         {/* Desktop nav (>= lg) */}
@@ -95,7 +95,7 @@ const SiteHeader: React.FC = () => {
 
       {/* Mobile / tablet dropdown (< lg) */}
       {menuOpen && (
-        <nav className="absolute left-0 right-0 top-full z-40 border-t border-white/10 bg-brand shadow-lg lg:hidden">
+        <nav className="absolute left-0 right-0 top-full z-40 border-t border-white/10 bg-panel shadow-lg lg:hidden">
           {NAV_LINKS.map((link) => (
             <NavLink
               key={link.label}
