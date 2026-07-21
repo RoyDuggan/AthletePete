@@ -7,6 +7,7 @@ import {
   generateTrainingPlan,
   hasEnoughToGenerate,
 } from "../services/trainingPlanService";
+import { generateSchedule } from "../services/trainingScheduleService";
 import {
   getTrainingPlan,
   saveTrainingPlan,
@@ -74,7 +75,15 @@ router.post("/athletes/:userId/generate", async (req: AuthedRequest, res) => {
         .json({ error: "This athlete hasn't filled in their questionnaire yet." });
     }
     const text = await generateTrainingPlan(answers);
-    const plan = saveTrainingPlan(userId, text, "generated");
+    // Best-effort dated schedule for the calendar; the plan still saves if this
+    // fails.
+    let schedule: Awaited<ReturnType<typeof generateSchedule>> = [];
+    try {
+      schedule = await generateSchedule(text, answers);
+    } catch (e) {
+      console.error("Schedule generation failed (continuing):", e);
+    }
+    const plan = saveTrainingPlan(userId, text, "generated", schedule);
     return res.status(200).json({ plan });
   } catch (error) {
     console.error("Coach generate error:", error);

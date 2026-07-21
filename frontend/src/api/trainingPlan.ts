@@ -1,7 +1,16 @@
 import { API_BASE as BASE, withCreds } from "./config";
 
+export type ScheduleDay = {
+  date: string; // YYYY-MM-DD
+  type: "on_ice" | "strength" | "conditioning" | "recovery" | "mobility" | "rest";
+  title: string;
+  summary?: string;
+  detail?: string;
+};
+
 export type TrainingPlan = {
   plan: string;
+  schedule: ScheduleDay[];
   status: "generated" | "curated" | "active";
   generatedAt: number;
   updatedAt: number;

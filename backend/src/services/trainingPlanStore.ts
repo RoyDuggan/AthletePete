@@ -1,12 +1,23 @@
 import fs from "fs";
 import path from "path";
 
+/** One dated session for the calendar. */
+export type ScheduleDay = {
+  date: string; // YYYY-MM-DD
+  type: "on_ice" | "strength" | "conditioning" | "recovery" | "mobility" | "rest";
+  title: string;
+  summary?: string;
+  detail?: string;
+};
+
 /**
  * Per-user generated training plan, persisted to the account. Status tracks the
  * coach-curation flow: "generated" (AI draft) → later "curated" / "active".
+ * `schedule` is the dated day-by-day breakdown that drives the calendar.
  */
 export type TrainingPlan = {
   plan: string;
+  schedule: ScheduleDay[];
   status: "generated" | "curated" | "active";
   generatedAt: number;
   updatedAt: number;
@@ -35,19 +46,22 @@ export function getTrainingPlan(userId: string): TrainingPlan | null {
   const r = readAll().find((x) => x.userId === userId);
   if (!r) return null;
   const { userId: _u, ...plan } = r;
-  return plan;
+  return { ...plan, schedule: plan.schedule ?? [] };
 }
 
 export function saveTrainingPlan(
   userId: string,
   plan: string,
-  status: TrainingPlan["status"] = "generated"
+  status: TrainingPlan["status"] = "generated",
+  schedule?: ScheduleDay[]
 ): TrainingPlan {
   const now = Date.now();
   const prev = readAll().find((x) => x.userId === userId);
   const record: PlanRecord = {
     userId,
     plan,
+    // Preserve the existing schedule on a prose-only edit (coach curation).
+    schedule: schedule ?? prev?.schedule ?? [],
     status,
     generatedAt: status === "generated" ? now : prev?.generatedAt ?? now,
     updatedAt: now,
