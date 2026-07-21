@@ -4,6 +4,10 @@ import { prisma } from "../db";
 import type { AuthedRequest } from "../middleware/requireAuth";
 import { getAthleteProfile } from "../services/athleteProfileStore";
 import {
+  generateTrainingPlan,
+  hasEnoughToGenerate,
+} from "../services/trainingPlanService";
+import {
   getTrainingPlan,
   saveTrainingPlan,
   listPlanStatuses,
@@ -57,6 +61,28 @@ router.get("/athletes/:userId", async (req: AuthedRequest, res) => {
     profile: getAthleteProfile(userId),
     plan: getTrainingPlan(userId),
   });
+});
+
+/** Generate a program for an athlete from their saved questionnaire. */
+router.post("/athletes/:userId/generate", async (req: AuthedRequest, res) => {
+  try {
+    const userId = String(req.params.userId);
+    const answers = getAthleteProfile(userId);
+    if (!hasEnoughToGenerate(answers)) {
+      return res
+        .status(400)
+        .json({ error: "This athlete hasn't filled in their questionnaire yet." });
+    }
+    const text = await generateTrainingPlan(answers);
+    const plan = saveTrainingPlan(userId, text, "generated");
+    return res.status(200).json({ plan });
+  } catch (error) {
+    console.error("Coach generate error:", error);
+    const message =
+      error instanceof Error ? error.message : "Could not generate the program.";
+    const status = message.includes("ANTHROPIC_API_KEY") ? 503 : 500;
+    return res.status(status).json({ error: message });
+  }
 });
 
 /** Save the coach's edited plan and mark it curated (or another status). */

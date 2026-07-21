@@ -6,6 +6,7 @@ import { INTAKE_SECTIONS } from "../../lib/intakeQuestions";
 import {
   listAthletes,
   getAthlete,
+  generateAthletePlan,
   saveAthletePlan,
   type CoachAthlete,
   type CoachAthleteDetail,
@@ -43,6 +44,8 @@ const CoachPage: React.FC = () => {
   const [detail, setDetail] = useState<CoachAthleteDetail | null>(null);
   const [planText, setPlanText] = useState("");
   const [loading, setLoading] = useState(true);
+  const [generating, setGenerating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
 
   const reload = () =>
@@ -58,9 +61,27 @@ const CoachPage: React.FC = () => {
 
   const open = async (userId: string) => {
     setStatus("idle");
+    setError(null);
     const d = await getAthlete(userId);
     setDetail(d);
     setPlanText(d.plan?.plan ?? "");
+  };
+
+  const generate = async () => {
+    if (!detail) return;
+    setGenerating(true);
+    setError(null);
+    setStatus("idle");
+    try {
+      const p = await generateAthletePlan(detail.athlete.userId);
+      setDetail({ ...detail, plan: p });
+      setPlanText(p.plan);
+      reload();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Generation failed.");
+    } finally {
+      setGenerating(false);
+    }
   };
 
   const save = async () => {
@@ -143,9 +164,30 @@ const CoachPage: React.FC = () => {
 
           {/* Editable plan */}
           <div className="rounded-xl border border-hair bg-panel p-5">
-            <h3 className="mb-2 font-oswald text-sm font-bold uppercase tracking-wide text-white">
-              Training program
-            </h3>
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <h3 className="font-oswald text-sm font-bold uppercase tracking-wide text-white">
+                Training program
+              </h3>
+              <button
+                type="button"
+                onClick={generate}
+                disabled={generating}
+                className="shrink-0 rounded-lg bg-brand px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-hero-blue disabled:opacity-50"
+              >
+                {generating
+                  ? "Building…"
+                  : detail.plan
+                  ? "Regenerate"
+                  : "Generate program"}
+              </button>
+            </div>
+            {generating && (
+              <p className="mb-3 text-sm text-muted">
+                Building the program from the questionnaire — this can take up to a
+                minute.
+              </p>
+            )}
+            {error && <p className="mb-3 text-sm text-[#ef4444]">{error}</p>}
             {detail.plan ? (
               <>
                 <textarea
@@ -178,9 +220,12 @@ const CoachPage: React.FC = () => {
                 </div>
               </>
             ) : (
-              <p className="text-sm text-muted">
-                This athlete hasn't generated a program yet.
-              </p>
+              !generating && (
+                <p className="text-sm text-muted">
+                  No program yet — click <strong>Generate program</strong> to build
+                  one from this athlete's questionnaire.
+                </p>
+              )
             )}
           </div>
         </div>

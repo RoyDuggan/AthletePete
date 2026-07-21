@@ -29,6 +29,21 @@ export async function getAthlete(userId: string): Promise<CoachAthleteDetail> {
   return (await res.json()) as CoachAthleteDetail;
 }
 
+/** Coach-triggered AI generation from the athlete's saved questionnaire. Slow. */
+export async function generateAthletePlan(userId: string): Promise<TrainingPlan> {
+  const res = await fetch(`${BASE}/coach/athletes/${userId}/generate`, {
+    method: "POST",
+    ...withCreds,
+  });
+  const payload = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(
+      (payload as { error?: string }).error ?? "Could not generate the program."
+    );
+  }
+  return (payload as { plan: TrainingPlan }).plan;
+}
+
 export async function saveAthletePlan(
   userId: string,
   plan: string,
