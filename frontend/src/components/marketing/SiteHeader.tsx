@@ -8,7 +8,9 @@ import { container, focusRing } from "./ui";
 /** Shared sticky header used by the home page and every marketing page. */
 
 export const NAV_LINKS: { label: string; to: string }[] = [
-  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "For Athletes", to: "/athletes" },
+  { label: "For Teams", to: "/teams" },
   { label: "Pricing", to: "/pricing" },
 ];
 
@@ -29,14 +31,14 @@ const SiteHeader: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-hair bg-panel shadow-md">
+    <header className="sticky top-0 z-50 bg-brand shadow-md">
       <div className={`${container} flex h-14 items-center justify-between lg:h-16`}>
         <Link
           to="/"
           className={`flex items-center ${focusRing}`}
           aria-label="D+R Athletic Development home"
         >
-          <DRWordmark />
+          <DRWordmark inverse />
         </Link>
 
         {/* Desktop nav (>= lg) */}
@@ -95,7 +97,7 @@ const SiteHeader: React.FC = () => {
 
       {/* Mobile / tablet dropdown (< lg) */}
       {menuOpen && (
-        <nav className="absolute left-0 right-0 top-full z-40 border-t border-white/10 bg-panel shadow-lg lg:hidden">
+        <nav className="absolute left-0 right-0 top-full z-40 border-t border-white/20 bg-brand shadow-lg lg:hidden">
           {NAV_LINKS.map((link) => (
             <NavLink
               key={link.label}

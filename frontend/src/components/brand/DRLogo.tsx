@@ -5,11 +5,30 @@ import React, { useId } from "react";
  * red (reads as the "D") and the lower half in white (the "R"), per the brand
  * guide. Rendered inline so the page's Fredoka web font applies.
  */
-export const DRMark: React.FC<{ className?: string; light?: boolean }> = ({
-  className = "h-10 w-auto",
-  light = false,
-}) => {
+export const DRMark: React.FC<{
+  className?: string;
+  light?: boolean;
+  /** Render a single-colour (white) mark, for use on a coloured/red banner. */
+  mono?: boolean;
+}> = ({ className = "h-10 w-auto", light = false, mono = false }) => {
   const clip = useId().replace(/:/g, "");
+  if (mono) {
+    return (
+      <svg viewBox="0 0 175 172" className={className} role="img" aria-label="D+R">
+        <text
+          x="87.5"
+          y="158"
+          textAnchor="middle"
+          fontFamily="Fredoka, sans-serif"
+          fontWeight={700}
+          fontSize={210}
+          fill="#FFFFFF"
+        >
+          R
+        </text>
+      </svg>
+    );
+  }
   return (
     <svg viewBox="0 0 175 172" className={className} role="img" aria-label="D+R">
       <defs>
@@ -44,15 +63,25 @@ export const DRMark: React.FC<{ className?: string; light?: boolean }> = ({
   );
 };
 
-/** Horizontal lockup: the mark + "D+R" wordmark + "Athletic Development". */
-export const DRWordmark: React.FC<{ className?: string }> = ({ className = "" }) => (
+/**
+ * Horizontal lockup: the mark + "D+R" wordmark + "Athletic Development".
+ * Pass `inverse` on a red / coloured banner (white mark + white text).
+ */
+export const DRWordmark: React.FC<{ className?: string; inverse?: boolean }> = ({
+  className = "",
+  inverse = false,
+}) => (
   <div className={`flex items-center gap-3 ${className}`}>
-    <DRMark className="h-9 w-auto lg:h-10" />
+    <DRMark className="h-9 w-auto lg:h-10" mono={inverse} />
     <div className="leading-none">
       <div className="font-display text-2xl font-bold leading-none text-white">
-        D<span className="text-brand">+</span>R
+        D<span className={inverse ? "text-white" : "text-brand"}>+</span>R
       </div>
-      <div className="mt-1 font-oswald text-[9px] font-semibold uppercase tracking-[0.24em] text-muted">
+      <div
+        className={`mt-1 font-oswald text-[9px] font-semibold uppercase tracking-[0.24em] ${
+          inverse ? "text-white/70" : "text-muted"
+        }`}
+      >
         Athletic Development
       </div>
     </div>

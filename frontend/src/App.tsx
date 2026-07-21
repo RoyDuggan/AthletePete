@@ -2,6 +2,9 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
+import AboutPage from "./pages/AboutPage";
+import ForAthletesPage from "./pages/ForAthletesPage";
+import ForTeamsPage from "./pages/ForTeamsPage";
 import PricingPage from "./pages/PricingPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
@@ -28,6 +31,9 @@ const App: React.FC = () => (
       <Routes>
         {/* ---- Public marketing site ---- */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/athletes" element={<ForAthletesPage />} />
+        <Route path="/teams" element={<ForTeamsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/register" element={<SignUpPage />} />

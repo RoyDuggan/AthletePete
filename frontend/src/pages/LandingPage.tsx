@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../context/AuthContext";
 import { authInput, authLabel, authError, focusRing } from "../components/marketing/ui";
-import { DRWordmark } from "../components/brand/DRLogo";
+import SiteHeader from "../components/marketing/SiteHeader";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -51,15 +51,15 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="grid min-h-screen grid-cols-1 bg-ink lg:grid-cols-2">
+    <div className="flex min-h-screen flex-col bg-ink">
+      <SiteHeader />
+      <div className="grid flex-1 grid-cols-1 lg:grid-cols-2">
       {/* ---- Left: marketing over the athlete hero ---- */}
       <div
-        className="relative flex flex-col justify-between px-8 py-10 md:px-14 lg:min-h-screen"
+        className="relative flex flex-col justify-center px-8 py-12 md:px-14"
         style={HERO_BG}
       >
-        <DRWordmark />
-
-        <div className="max-w-lg py-10 lg:py-0">
+        <div className="max-w-lg">
           <p className="font-oswald text-xs font-semibold uppercase tracking-[0.24em] text-brand">
             Individualised training · Measurable progress
           </p>
@@ -87,7 +87,7 @@ const LandingPage: React.FC = () => {
           </ul>
         </div>
 
-        <p className="font-oswald text-[10px] uppercase tracking-[0.2em] text-muted">
+        <p className="mt-10 font-oswald text-[10px] uppercase tracking-[0.2em] text-muted">
           © D+R Athletic Development
         </p>
       </div>
@@ -186,6 +186,7 @@ const LandingPage: React.FC = () => {
             </Link>
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

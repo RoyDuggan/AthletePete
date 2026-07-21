@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { container, focusRing } from "./ui";
 
 const FOOTER_LINKS: { label: string; to: string }[] = [
+  { label: "About", to: "/about" },
+  { label: "For Athletes", to: "/athletes" },
+  { label: "For Teams", to: "/teams" },
   { label: "Pricing", to: "/pricing" },
   { label: "Terms", to: "/terms" },
   { label: "Privacy", to: "/privacy" },
