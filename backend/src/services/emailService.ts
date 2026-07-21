@@ -6,7 +6,7 @@ import { ServerClient } from "postmark";
  * link) to the server console instead — handy in dev and so account actions
  * never fail just because email isn't wired up yet.
  */
-const FROM = process.env.EMAIL_FROM || "no-reply@virtualpete.co.uk";
+const FROM = process.env.EMAIL_FROM || "no-reply@athletepete.co.uk";
 
 export function emailEnabled(): boolean {
   return Boolean(process.env.POSTMARK_SERVER_TOKEN);
@@ -55,7 +55,7 @@ const wrap = (heading: string, body: string, cta: { label: string; url: string }
       <a href="${cta.url}" style="background:#a6e22e;color:#000;font-weight:bold;text-decoration:none;padding:12px 22px;border-radius:8px;display:inline-block">${cta.label}</a>
     </p>
     <p style="font-size:12px;color:#6b7280;line-height:1.6">If the button doesn't work, copy this link into your browser:<br>${cta.url}</p>
-    <p style="font-size:12px;color:#6b7280">— Virtual Pete</p>
+    <p style="font-size:12px;color:#6b7280">— AthletePete</p>
   </div>`;
 
 export async function sendVerificationEmail(
@@ -66,11 +66,11 @@ export async function sendVerificationEmail(
   const hi = name ? `Hi ${name},` : "Hi,";
   await send({
     to,
-    subject: "Verify your Virtual Pete email address",
-    text: `${hi}\n\nThanks for creating your Virtual Pete account. Confirm your email address using this link (expires in 24 hours):\n\n${url}\n\nIf you didn't sign up, you can ignore this email.\n\n— Virtual Pete`,
+    subject: "Verify your AthletePete email address",
+    text: `${hi}\n\nThanks for creating your AthletePete account. Confirm your email address using this link (expires in 24 hours):\n\n${url}\n\nIf you didn't sign up, you can ignore this email.\n\n— AthletePete`,
     html: wrap(
       "Confirm your email",
-      `${hi} thanks for creating your Virtual Pete account. Please confirm your email address — this link expires in 24 hours. If you didn't sign up, you can ignore this email.`,
+      `${hi} thanks for creating your AthletePete account. Please confirm your email address — this link expires in 24 hours. If you didn't sign up, you can ignore this email.`,
       { label: "Verify email address", url }
     ),
   });
@@ -84,11 +84,11 @@ export async function sendPasswordResetEmail(
   const hi = name ? `Hi ${name},` : "Hi,";
   await send({
     to,
-    subject: "Reset your Virtual Pete password",
-    text: `${hi}\n\nWe received a request to reset your Virtual Pete password. Choose a new one using this link (expires in 1 hour):\n\n${url}\n\nIf you didn't request this, no action is needed and your password stays the same.\n\n— Virtual Pete`,
+    subject: "Reset your AthletePete password",
+    text: `${hi}\n\nWe received a request to reset your AthletePete password. Choose a new one using this link (expires in 1 hour):\n\n${url}\n\nIf you didn't request this, no action is needed and your password stays the same.\n\n— AthletePete`,
     html: wrap(
       "Reset your password",
-      `${hi} we received a request to reset your Virtual Pete password. This link expires in 1 hour. If you didn't request this, no action is needed and your password stays the same.`,
+      `${hi} we received a request to reset your AthletePete password. This link expires in 1 hour. If you didn't request this, no action is needed and your password stays the same.`,
       { label: "Reset password", url }
     ),
   });

@@ -90,7 +90,7 @@ const ExampleOutputsPage: React.FC = () => {
             Example <span className="text-brand">Outputs</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-400 md:text-base">
-            A taste of the insights Virtual Pete produces — per-zone deltas,
+            A taste of the insights AthletePete produces — per-zone deltas,
             cross-session comparisons and AI coaching summaries.
           </p>
         </div>

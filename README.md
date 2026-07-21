@@ -1,8 +1,8 @@
-# Virtual Pete
+# AthletePete
 
 **Find your edge.** AI-assisted kart telemetry analysis, driver coaching, and setup advisory.
 
-Virtual Pete ingests AiM / RaceStudio telemetry exports, detects laps from beacon
+AthletePete ingests AiM / RaceStudio telemetry exports, detects laps from beacon
 markers, and turns the data into actionable insight: lap-to-lap comparison,
 per-corner ("feature zone") time gain/loss, friction-circle g-plots, and
 speed-vs-distance traces.
@@ -38,7 +38,7 @@ speed-vs-distance traces.
 ## Project structure
 
 ```
-VirtualPete/
+AthletePete/
 ├── backend/                # Express + TypeScript API
 │   ├── src/
 │   │   ├── index.ts        # server entry (port 3001)

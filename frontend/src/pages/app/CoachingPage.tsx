@@ -93,7 +93,7 @@ const CoachingPage: React.FC = () => {
     return (
       <AppPage
         title="Coaching"
-        accent="/ Virtual Pete"
+        accent="/ AthletePete"
         subtitle="AI coaching that explains where time is lost and why."
       >
         <UpgradeNotice feature="Coaching" />
@@ -169,7 +169,7 @@ const CoachingPage: React.FC = () => {
   return (
     <AppPage
       title="Coaching"
-      accent="/ Virtual Pete"
+      accent="/ AthletePete"
       subtitle="Corner fingerprints: how much grip you use, corner by corner, lap by lap."
     >
       {/* Session picker */}

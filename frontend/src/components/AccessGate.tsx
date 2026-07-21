@@ -17,7 +17,7 @@ const AccessGate: React.FC<{ from?: string }> = ({ from }) => (
           🔒
         </div>
         <h1 className="mt-6 text-2xl font-extrabold uppercase tracking-wide text-white md:text-3xl">
-          Register free to unlock your Virtual Pete Race Hub.
+          Register free to unlock your AthletePete Race Hub.
         </h1>
         <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-gray-400">
           Your Race Hub gives you access to AI telemetry analytics, kart setup

@@ -1,4 +1,4 @@
-# Virtual Pete — host-agnostic production stack.
+# AthletePete — host-agnostic production stack.
 #
 #   web (Caddy)  →  serves the built frontend + proxies /api → backend
 #   backend      →  Node/Express + Prisma
@@ -16,13 +16,13 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-vpete}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vpete}
-      POSTGRES_DB: ${POSTGRES_DB:-virtualpete}
+      POSTGRES_USER: ${POSTGRES_USER:-apete}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-apete}
+      POSTGRES_DB: ${POSTGRES_DB:-athletepete}
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-vpete} -d ${POSTGRES_DB:-virtualpete}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-apete} -d ${POSTGRES_DB:-athletepete}"]
       interval: 5s
       timeout: 5s
       retries: 12
@@ -33,7 +33,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3001
-      DATABASE_URL: postgresql://${POSTGRES_USER:-vpete}:${POSTGRES_PASSWORD:-vpete}@postgres:5432/${POSTGRES_DB:-virtualpete}?schema=public
+      DATABASE_URL: postgresql://${POSTGRES_USER:-apete}:${POSTGRES_PASSWORD:-apete}@postgres:5432/${POSTGRES_DB:-athletepete}?schema=public
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       JWT_SECRET: ${JWT_SECRET:-change-me}
       STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
@@ -42,7 +42,7 @@ services:
       STRIPE_PRICE_TEAM: ${STRIPE_PRICE_TEAM:-}
       STRIPE_PRICE_COACH: ${STRIPE_PRICE_COACH:-}
       POSTMARK_SERVER_TOKEN: ${POSTMARK_SERVER_TOKEN:-}
-      EMAIL_FROM: ${EMAIL_FROM:-no-reply@virtualpete.co.uk}
+      EMAIL_FROM: ${EMAIL_FROM:-no-reply@athletepete.co.uk}
       APP_URL: ${APP_URL:-}
     volumes:
       - telemetry:/app/uploads
@@ -70,9 +70,9 @@ services:
     image: postgres:16-alpine
     environment:
       PGHOST: postgres
-      PGUSER: ${POSTGRES_USER:-vpete}
-      PGPASSWORD: ${POSTGRES_PASSWORD:-vpete}
-      PGDATABASE: ${POSTGRES_DB:-virtualpete}
+      PGUSER: ${POSTGRES_USER:-apete}
+      PGPASSWORD: ${POSTGRES_PASSWORD:-apete}
+      PGDATABASE: ${POSTGRES_DB:-athletepete}
       BACKUP_KEEP_DAYS: ${BACKUP_KEEP_DAYS:-14}
       BACKUP_CRON: ${BACKUP_CRON:-0 3 * * *}
     volumes:

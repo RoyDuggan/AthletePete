@@ -37,9 +37,9 @@ const SiteHeader: React.FC = () => {
         <Link
           to="/"
           className={`flex items-center ${focusRing}`}
-          aria-label="Virtual Pete home"
+          aria-label="AthletePete home"
         >
-          <img src={logoUrl} alt="Virtual Pete" className="h-9 w-auto lg:h-11" />
+          <img src={logoUrl} alt="AthletePete" className="h-9 w-auto lg:h-11" />
         </Link>
 
         {/* Desktop nav (>= lg) */}

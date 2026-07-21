@@ -61,7 +61,7 @@ const HowItWorksPage: React.FC = () => (
           <span className="text-brand">AI insight second.</span>
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-400 md:text-base">
-          Virtual Pete doesn't hand raw, noisy telemetry to an AI and hope. It
+          AthletePete doesn't hand raw, noisy telemetry to an AI and hope. It
           first extracts clean, physically-grounded features from your data —
           then lets the AI reason over them like a race engineer. Here's the
           walk-through, with real examples.
@@ -256,7 +256,7 @@ const HowItWorksPage: React.FC = () => (
           See it on <span className="text-brand">your</span> data
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-400">
-          Upload a session and Virtual Pete extracts the features and writes the
+          Upload a session and AthletePete extracts the features and writes the
           coaching plan. Registration is free — no credit card required.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

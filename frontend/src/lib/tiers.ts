@@ -14,7 +14,7 @@ export type Feature =
   | "jetting" // jetting / tuning tools
   | "calendar" // race calendar
   | "telemetry" // telemetry upload + analysis
-  | "coaching" // Virtual Pete AI coaching
+  | "coaching" // AthletePete AI coaching
   | "team"; // multi-driver / team workspace
 
 export type TierKey = "free" | "trial" | "individual" | "team";

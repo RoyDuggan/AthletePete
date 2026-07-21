@@ -17,7 +17,7 @@ router.get("/export", async (req: AuthedRequest, res) => {
     res.setHeader("Content-Type", "application/json");
     res.setHeader(
       "Content-Disposition",
-      'attachment; filename="virtualpete-data-export.json"'
+      'attachment; filename="athletepete-data-export.json"'
     );
     return res.status(200).send(JSON.stringify(data, null, 2));
   } catch (error) {

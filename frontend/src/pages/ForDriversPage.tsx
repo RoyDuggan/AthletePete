@@ -11,10 +11,10 @@ const DATA: AudiencePageData = {
   intro: [
     { p: "Every lap contains opportunities to improve." },
     {
-      p: "Virtual Pete transforms complex telemetry into clear coaching insights, helping drivers understand not only where time is being lost but why.",
+      p: "AthletePete transforms complex telemetry into clear coaching insights, helping drivers understand not only where time is being lost but why.",
     },
     {
-      p: "Whether you're competing in Bambino, Cadet, Junior, Senior or Gearbox classes, Virtual Pete adapts its coaching to your stage of development.",
+      p: "Whether you're competing in Bambino, Cadet, Junior, Senior or Gearbox classes, AthletePete adapts its coaching to your stage of development.",
     },
   ],
   sections: [
@@ -22,7 +22,7 @@ const DATA: AudiencePageData = {
       title: "Start With The Fundamentals",
       blocks: [
         { p: "New drivers don't need advanced telemetry jargon." },
-        { p: "Virtual Pete can be configured to focus on:" },
+        { p: "AthletePete can be configured to focus on:" },
         {
           bullets: [
             "Braking points",
@@ -64,7 +64,7 @@ const DATA: AudiencePageData = {
         {
           p: "At the highest level, winning margins are often measured in hundredths of a second.",
         },
-        { p: "Virtual Pete helps experienced drivers identify:" },
+        { p: "AthletePete helps experienced drivers identify:" },
         {
           bullets: [
             "Tiny variations in braking technique",
@@ -84,7 +84,7 @@ const DATA: AudiencePageData = {
           p: "Professional drivers work alongside engineers to understand performance and make evidence-based decisions.",
         },
         {
-          p: "Virtual Pete helps young drivers develop those skills from the start, creating habits that can support progression through karting and beyond.",
+          p: "AthletePete helps young drivers develop those skills from the start, creating habits that can support progression through karting and beyond.",
         },
       ],
     },
@@ -93,7 +93,7 @@ const DATA: AudiencePageData = {
     title: "Learn From Every Lap.",
     titleAccent: "Find Your Edge.",
     paragraphs: [
-      "Virtual Pete grows with the driver — from first laps to future championships.",
+      "AthletePete grows with the driver — from first laps to future championships.",
     ],
   },
 };

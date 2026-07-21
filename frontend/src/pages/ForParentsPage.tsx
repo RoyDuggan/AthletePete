@@ -26,7 +26,7 @@ const DATA: AudiencePageData = {
       p: "Yet one of the most valuable assets produced during every session is often underused: the data.",
     },
     {
-      p: "Virtual Pete helps ensure that every test day, practice session and race meeting continues to deliver value long after the kart has been loaded back into the van.",
+      p: "AthletePete helps ensure that every test day, practice session and race meeting continues to deliver value long after the kart has been loaded back into the van.",
     },
   ],
   sections: [
@@ -44,7 +44,7 @@ const DATA: AudiencePageData = {
           ],
         },
         {
-          p: "Virtual Pete helps answer those questions using evidence rather than guesswork.",
+          p: "AthletePete helps answer those questions using evidence rather than guesswork.",
         },
       ],
     },
@@ -82,7 +82,7 @@ const DATA: AudiencePageData = {
           ],
         },
         {
-          p: "Virtual Pete allows multiple karts and drivers to be managed under a single family account.",
+          p: "AthletePete allows multiple karts and drivers to be managed under a single family account.",
         },
         { p: "Benefits include:" },
         {
@@ -101,7 +101,7 @@ const DATA: AudiencePageData = {
       title: "Build A Racing Diary",
       blocks: [
         {
-          p: "Over time, Virtual Pete becomes much more than a telemetry system.",
+          p: "Over time, AthletePete becomes much more than a telemetry system.",
         },
         { p: "It becomes a record of a driver's development." },
         { p: "A place where families can look back and see:" },
@@ -122,7 +122,7 @@ const DATA: AudiencePageData = {
       blocks: [
         { p: "You already invest heavily in karting." },
         {
-          p: "Virtual Pete helps maximise the value of every session by ensuring the lessons hidden within the data are not lost.",
+          p: "AthletePete helps maximise the value of every session by ensuring the lessons hidden within the data are not lost.",
         },
         { p: "Don't just collect data. Learn from it.", emphasis: true },
       ],

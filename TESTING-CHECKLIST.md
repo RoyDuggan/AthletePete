@@ -12,7 +12,7 @@ item; note the environment caveats at the bottom.
 ## 1. Accounts & auth
 
 - [ ] **Register** a new account → you land in the app. Check the **backend
-  console** for a "Verify your Virtual Pete email address" log line with a link
+  console** for a "Verify your AthletePete email address" log line with a link
   (email isn't sending yet — see caveats).
 - [ ] Open that `/verify-email?token=…` link → shows **"Email verified"**;
   Settings now shows **Email verified: Yes**.
@@ -40,7 +40,7 @@ item; note the environment caveats at the bottom.
 
 ## 3. GDPR (Settings → Your data)
 
-- [ ] **Download my data** → a `virtualpete-data-export.json` downloads; open it
+- [ ] **Download my data** → a `athletepete-data-export.json` downloads; open it
   and confirm it contains your account, driver profile, karts, sessions.
 - [ ] **Delete my account** (throwaway account) → type `DELETE` → confirm → you're
   signed out and returned home; the account can no longer sign in; any Stripe

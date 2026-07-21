@@ -41,7 +41,7 @@ export const LANDING_COPY = {
     headline: "AI-Powered Karting Insights.",
     accentHeadline: "Faster. Smarter.",
     body:
-      "Virtual Pete gives you AI telemetry analytics and kart setup guidance to help you make smarter decisions on and off track.",
+      "AthletePete gives you AI telemetry analytics and kart setup guidance to help you make smarter decisions on and off track.",
     cta: { label: "Find Out More", to: "/how-it-works" },
   },
   raceHub: {

@@ -12,7 +12,7 @@ const DATA: AudiencePageData = {
     { p: "Successful kart teams manage far more than equipment." },
     { p: "They develop drivers." },
     {
-      p: "Virtual Pete provides a central platform for analysing performance, tracking progress and delivering consistent coaching across an entire team operation.",
+      p: "AthletePete provides a central platform for analysing performance, tracking progress and delivering consistent coaching across an entire team operation.",
     },
   ],
   sections: [
@@ -31,7 +31,7 @@ const DATA: AudiencePageData = {
         },
         { p: "All from a single platform." },
         {
-          p: "Whether supporting three drivers or thirty, Virtual Pete scales to fit the organisation.",
+          p: "Whether supporting three drivers or thirty, AthletePete scales to fit the organisation.",
         },
       ],
     },
@@ -58,7 +58,7 @@ const DATA: AudiencePageData = {
       title: "Kart Configuration Management",
       blocks: [
         { p: "Performance often depends on more than the driver." },
-        { p: "Virtual Pete allows teams to maintain records for:" },
+        { p: "AthletePete allows teams to maintain records for:" },
         {
           bullets: [
             "Chassis configurations",
@@ -97,7 +97,7 @@ const DATA: AudiencePageData = {
           p: "Different coaches often communicate performance in different ways.",
         },
         {
-          p: "Virtual Pete provides a consistent analytical framework that allows:",
+          p: "AthletePete provides a consistent analytical framework that allows:",
         },
         {
           bullets: [
@@ -118,7 +118,7 @@ const DATA: AudiencePageData = {
       blocks: [
         { p: "Every event produces valuable information." },
         { p: "Without a structured process, much of that knowledge is lost." },
-        { p: "Virtual Pete creates a permanent record of:" },
+        { p: "AthletePete creates a permanent record of:" },
         {
           bullets: [
             "Driver development",
@@ -139,7 +139,7 @@ const DATA: AudiencePageData = {
     title: "From Club Teams To",
     titleAccent: "Championship Campaigns",
     paragraphs: [
-      "Whether you're supporting local club racers or competing at national level, Virtual Pete provides a scalable platform for driver development, performance analysis and knowledge management.",
+      "Whether you're supporting local club racers or competing at national level, AthletePete provides a scalable platform for driver development, performance analysis and knowledge management.",
     ],
     taglines: ["Develop drivers.", "Capture knowledge.", "Find your edge."],
   },

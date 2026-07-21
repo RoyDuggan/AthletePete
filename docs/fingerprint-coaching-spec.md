@@ -1,4 +1,4 @@
-# Virtual Pete — Corner Selection & Fingerprint Engine
+# AthletePete — Corner Selection & Fingerprint Engine
 
 **Software Requirements Specification (v1)**
 

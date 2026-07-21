@@ -55,9 +55,9 @@ const AppHeader: React.FC = () => {
           <Link
             to="/app/dashboard"
             className={`flex items-center ${focusRing}`}
-            aria-label="Virtual Pete dashboard"
+            aria-label="AthletePete dashboard"
           >
-            <img src={logoUrl} alt="Virtual Pete" className="h-9 w-auto lg:h-11" />
+            <img src={logoUrl} alt="AthletePete" className="h-9 w-auto lg:h-11" />
           </Link>
 
           <div className="flex items-center gap-3">

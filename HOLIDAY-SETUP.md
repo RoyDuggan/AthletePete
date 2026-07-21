@@ -1,13 +1,13 @@
 # Resuming development on another machine
 
-Quick checklist for picking VirtualPete up on a laptop. The code is all in git;
+Quick checklist for picking AthletePete up on a laptop. The code is all in git;
 the items below are the things git does **not** carry.
 
 ## 1. Clone and check out the working branch
 
 ```bash
-git clone https://github.com/RoyDuggan/VirtualPete.git
-cd VirtualPete
+git clone https://github.com/RoyDuggan/AthletePete.git
+cd AthletePete
 git checkout ChatGPT-restructured-nav
 ```
 

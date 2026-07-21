@@ -96,7 +96,7 @@ const DriverSetupPage: React.FC = () => {
     <AppPage
       title="Driver"
       accent="Setup"
-      subtitle="Tell Virtual Pete about the driver so coaching can be tailored to their class, age and stage."
+      subtitle="Tell AthletePete about the driver so coaching can be tailored to their class, age and stage."
     >
       <form onSubmit={onSubmit} className={`${appPanel} max-w-2xl space-y-4`}>
         <div>

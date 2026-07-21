@@ -1,6 +1,6 @@
 # Deployment
 
-Virtual Pete runs as a self-contained Docker Compose stack:
+AthletePete runs as a self-contained Docker Compose stack:
 
 | Service    | What it does                                              |
 | ---------- | --------------------------------------------------------- |
@@ -69,14 +69,14 @@ docker compose exec backup sh /usr/local/bin/backup.sh
 ```bash
 # Database (drops & recreates objects, then loads the dump):
 cat backups/db-<ts>.dump | docker compose exec -T postgres \
-  pg_restore --clean --if-exists --no-owner -U vpete -d virtualpete
+  pg_restore --clean --if-exists --no-owner -U apete -d athletepete
 
 # JSON stores → appdata volume:
-docker run --rm -v virtualpete_appdata:/data -v "$PWD/backups:/b" alpine \
+docker run --rm -v athletepete_appdata:/data -v "$PWD/backups:/b" alpine \
   sh -c "rm -rf /data/* && tar xzf /b/appdata-<ts>.tar.gz -C /data"
 
 # Uploaded files → telemetry volume:
-docker run --rm -v virtualpete_telemetry:/data -v "$PWD/backups:/b" alpine \
+docker run --rm -v athletepete_telemetry:/data -v "$PWD/backups:/b" alpine \
   sh -c "rm -rf /data/* && tar xzf /b/uploads-<ts>.tar.gz -C /data"
 ```
 

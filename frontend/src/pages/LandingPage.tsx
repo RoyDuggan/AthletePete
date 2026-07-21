@@ -11,7 +11,7 @@ import SplitHeroLanding from "../components/landing/SplitHeroLanding";
 const LandingPage: React.FC = () => {
   useEffect(() => {
     const prev = document.title;
-    document.title = "Virtual Pete — AI-Powered Karting Insights";
+    document.title = "AthletePete — AI-Powered Karting Insights";
     return () => {
       document.title = prev;
     };

@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 
 import { verifyToken } from "../services/authService";
 
-export const AUTH_COOKIE = "vp_token";
+export const AUTH_COOKIE = "ap_token";
 
 /** Express request augmented with the authenticated user id. */
 export interface AuthedRequest extends Request {
