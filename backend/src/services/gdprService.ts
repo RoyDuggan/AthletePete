@@ -4,6 +4,7 @@ import {
   getAthleteProfile,
   deleteAthleteProfile,
 } from "./athleteProfileStore";
+import { getTrainingPlan, deleteTrainingPlan } from "./trainingPlanStore";
 
 /**
  * GDPR subject-access (export) and erasure (delete).
@@ -40,6 +41,7 @@ export async function exportUserData(userId: string): Promise<unknown> {
     exportedAt: new Date().toISOString(),
     account: user,
     athleteProfile: getAthleteProfile(userId),
+    trainingPlan: getTrainingPlan(userId),
   };
 }
 
@@ -62,5 +64,6 @@ export async function deleteUserAccount(userId: string): Promise<void> {
   }
 
   deleteAthleteProfile(userId);
+  deleteTrainingPlan(userId);
   await prisma.user.delete({ where: { id: userId } });
 }
