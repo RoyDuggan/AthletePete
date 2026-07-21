@@ -53,16 +53,16 @@ const AppHeader: React.FC = () => {
     "Menu";
 
   return (
-    <header className="sticky top-0 z-50 bg-ink shadow-md">
-      {/* Top bar: logo + account + sign out */}
-      <div className="border-b border-hair bg-panel">
+    <header className="sticky top-0 z-50 bg-brand shadow-md">
+      {/* Top bar: logo + account + sign out — same blue banner as the home page. */}
+      <div className="border-b border-white/10 bg-brand">
         <div className={`${container} flex h-14 items-center justify-between lg:h-16`}>
           <Link
             to="/app/dashboard"
             className={`flex items-center ${focusRing}`}
-            aria-label="D+R Athletic Development dashboard"
+            aria-label="DR Performance dashboard"
           >
-            <DRWordmark />
+            <DRWordmark inverse />
           </Link>
 
           <div className="flex items-center gap-3">
@@ -101,7 +101,7 @@ const AppHeader: React.FC = () => {
                 <span className="flex items-center gap-1">
                   {link.label}
                   {locked && (
-                    <span className="text-[11px] text-gray-600" title="Upgrade to unlock">
+                    <span className="text-[11px] text-muted" title="Upgrade to unlock">
                       🔒
                     </span>
                   )}
@@ -152,7 +152,7 @@ const AppHeader: React.FC = () => {
                 <span className="flex items-center gap-1">
                   {link.label}
                   {locked && (
-                    <span className="text-[11px] text-gray-600" title="Upgrade to unlock">
+                    <span className="text-[11px] text-muted" title="Upgrade to unlock">
                       🔒
                     </span>
                   )}

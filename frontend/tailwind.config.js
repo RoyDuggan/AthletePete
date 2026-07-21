@@ -8,20 +8,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        // D+R Athletic Development brand — deep dark ground + signal red.
-        brand: "#FF3B2E", // signal red accent (the "D+R" +)
+        // DR Performance brand — deep dark ground + performance blue accent.
+        brand: "#1672CB", // performance blue accent
         ink: "#0A0C10", // deep dark page background
         panel: "#0F1319", // dark sections / cards
         steel: "#161b22", // button background
-        muted: "#79818C", // muted secondary text
+        muted: "#E1E8F1", // muted secondary text (lightened for contrast on dark)
         hair: "#20252D", // hairline borders
         mist: "#F4F3EF", // light form inputs / light cards
-        "hero-blue": "#FF5A4E", // lighter red (hover / links)
+        "hero-blue": "#32A8FF", // bright blue (hover / links)
       },
+      // Match VirtualPete: a plain system font stack, no web-font downloads.
+      // The three keys are kept so existing font-display / font-oswald classes
+      // still resolve — they all point at the same system stack now.
       fontFamily: {
-        sans: ["Manrope", "system-ui", "sans-serif"], // body
-        display: ["Fredoka", "system-ui", "sans-serif"], // mark / headlines
-        oswald: ["Oswald", "system-ui", "sans-serif"], // labels / eyebrows
+        sans: ["system-ui", "'Segoe UI'", "Roboto", "sans-serif"], // body
+        display: ["system-ui", "'Segoe UI'", "Roboto", "sans-serif"], // headlines
+        oswald: ["system-ui", "'Segoe UI'", "Roboto", "sans-serif"], // labels
       },
       keyframes: {
         shake: {

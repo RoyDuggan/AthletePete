@@ -22,11 +22,12 @@ const StatusBadge: React.FC<{ status: string | null }> = ({ status }) => {
     curated: "border-brand/50 bg-brand/10 text-brand",
     active: "border-emerald-400/40 bg-emerald-400/10 text-emerald-300",
   };
-  const label = status
-    ? status === "generated"
-      ? "Needs review"
-      : status
-    : "No plan";
+  const labels: Record<string, string> = {
+    generated: "Needs review",
+    curated: "Approved",
+    active: "Active",
+  };
+  const label = status ? labels[status] ?? status : "No plan";
   return (
     <span
       className={`rounded border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
@@ -121,7 +122,7 @@ const CoachPage: React.FC = () => {
     <AppPage
       title="Coach"
       accent="Review"
-      subtitle="Review and curate athletes' AI-generated programs before they're finalised."
+      subtitle="Review and approve athletes' AI-generated programs before they're finalised."
     >
       {loading ? (
         <p className="text-sm text-muted">Loading…</p>
@@ -202,7 +203,7 @@ const CoachPage: React.FC = () => {
                 <div className="mt-3 flex items-center justify-between gap-3">
                   <span className="text-xs text-muted">
                     {status === "saved"
-                      ? "Saved & marked curated ✓"
+                      ? "Saved & marked approved ✓"
                       : status === "error"
                       ? "Couldn't save"
                       : status === "saving"
@@ -215,7 +216,7 @@ const CoachPage: React.FC = () => {
                     disabled={status === "saving"}
                     className="rounded-lg bg-brand px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-hero-blue disabled:opacity-50"
                   >
-                    {status === "saving" ? "Saving…" : "Save & mark curated"}
+                    {status === "saving" ? "Saving…" : "Save & mark approved"}
                   </button>
                 </div>
               </>

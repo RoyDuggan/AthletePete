@@ -36,7 +36,7 @@ const SiteHeader: React.FC = () => {
         <Link
           to="/"
           className={`flex items-center ${focusRing}`}
-          aria-label="D+R Athletic Development home"
+          aria-label="DR Performance home"
         >
           <DRWordmark inverse />
         </Link>

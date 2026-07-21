@@ -16,7 +16,7 @@ const LegalPage: React.FC<{
         <h1 className="text-3xl font-extrabold uppercase tracking-wide text-white">
           {title}
         </h1>
-        <p className="mt-2 text-xs uppercase tracking-wide text-gray-500">
+        <p className="mt-2 text-xs uppercase tracking-wide text-muted">
           Last updated: {updated}
         </p>
         {intro && <p className="mt-4 text-sm leading-relaxed text-gray-400">{intro}</p>}

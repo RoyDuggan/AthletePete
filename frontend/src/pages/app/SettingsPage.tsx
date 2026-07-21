@@ -8,7 +8,7 @@ import { exportMyData, deleteMyAccount } from "../../api/account";
 import { resendVerification } from "../../api/auth";
 
 const rowCls = "flex items-center justify-between gap-4 py-3 text-sm";
-const labelCls = "text-xs font-bold uppercase tracking-wide text-gray-500";
+const labelCls = "text-xs font-bold uppercase tracking-wide text-muted";
 
 const SettingsPage: React.FC = () => {
   const { user, logout } = useAuth();

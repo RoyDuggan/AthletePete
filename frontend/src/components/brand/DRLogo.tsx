@@ -1,90 +1,60 @@
 import React, { useId } from "react";
 
 /**
- * D+R Athletic Development brand mark: a Fredoka "R" with the top half in signal
- * red (reads as the "D") and the lower half in white (the "R"), per the brand
- * guide. Rendered inline so the page's Fredoka web font applies.
+ * DR Performance brand mark: the sponsor's "DR" monogram (from the supplied
+ * brand assets) — a dark "D" beside a blue "R". Rendered inline as SVG so it
+ * scales crisply and supports the light / mono variants the headers need.
  */
 export const DRMark: React.FC<{
   className?: string;
+  /** Dark "D" for use on a light background. */
   light?: boolean;
-  /** Render a single-colour (white) mark, for use on a coloured/red banner. */
+  /** Single-colour (white) mark, for use on a coloured/blue banner. */
   mono?: boolean;
 }> = ({ className = "h-10 w-auto", light = false, mono = false }) => {
-  const clip = useId().replace(/:/g, "");
-  if (mono) {
-    return (
-      <svg viewBox="0 0 175 172" className={className} role="img" aria-label="D+R">
-        <text
-          x="87.5"
-          y="158"
-          textAnchor="middle"
-          fontFamily="Fredoka, sans-serif"
-          fontWeight={700}
-          fontSize={210}
-          fill="#FFFFFF"
-        >
-          R
-        </text>
-      </svg>
-    );
-  }
+  const gid = useId().replace(/:/g, "");
+  const dFill = mono ? "#FFFFFF" : light ? "#11151A" : "#EDEFF2";
+  const rFill = mono ? "#FFFFFF" : `url(#${gid})`;
   return (
-    <svg viewBox="0 0 175 172" className={className} role="img" aria-label="D+R">
+    <svg
+      viewBox="0 0 320 220"
+      className={className}
+      role="img"
+      aria-label="DR Performance"
+    >
       <defs>
-        <clipPath id={clip}>
-          <rect x="0" y="0" width="175" height="85" />
-        </clipPath>
+        <linearGradient id={gid} x1="0" x2="1">
+          <stop offset="0" stopColor="#32A8FF" />
+          <stop offset="1" stopColor="#0866C6" />
+        </linearGradient>
       </defs>
-      <text
-        x="87.5"
-        y="158"
-        textAnchor="middle"
-        fontFamily="Fredoka, sans-serif"
-        fontWeight={700}
-        fontSize={210}
-        fill={light ? "#14181F" : "#EDEFF2"}
-      >
-        R
-      </text>
-      <text
-        x="87.5"
-        y="158"
-        textAnchor="middle"
-        fontFamily="Fredoka, sans-serif"
-        fontWeight={700}
-        fontSize={210}
-        fill="#FF3B2E"
-        clipPath={`url(#${clip})`}
-      >
-        R
-      </text>
+      {/* D */}
+      <path
+        d="M10 28h96c58 0 91 30 91 68s-33 68-91 68H10V28zm44 38v60h50c29 0 47-11 47-30s-18-30-47-30H54z"
+        fill={dFill}
+      />
+      {/* R */}
+      <path
+        d="M120 28h92c51 0 81 24 81 62 0 27-15 47-43 57l58 47h-65l-51-42h-28v42h-44V28zm44 37v51h45c26 0 40-9 40-26s-14-25-40-25h-45z"
+        fill={rFill}
+      />
     </svg>
   );
 };
 
 /**
- * Horizontal lockup: the mark + "D+R" wordmark + "Athletic Development".
- * Pass `inverse` on a red / coloured banner (white mark + white text).
+ * Horizontal lockup: the DR mark + "Performance" wordmark, reading "DR
+ * Performance". Pass `inverse` on a blue / coloured banner (white mark + text).
  */
 export const DRWordmark: React.FC<{ className?: string; inverse?: boolean }> = ({
   className = "",
   inverse = false,
 }) => (
-  <div className={`flex items-center gap-3 ${className}`}>
-    <DRMark className="h-9 w-auto lg:h-10" mono={inverse} />
-    <div className="leading-none">
-      <div className="font-display text-2xl font-bold leading-none text-white">
-        D<span className={inverse ? "text-white" : "text-brand"}>+</span>R
-      </div>
-      <div
-        className={`mt-1 font-oswald text-[9px] font-semibold uppercase tracking-[0.24em] ${
-          inverse ? "text-white/70" : "text-muted"
-        }`}
-      >
-        Athletic Development
-      </div>
-    </div>
+  <div className={`flex items-center gap-2.5 ${className}`}>
+    <DRMark className="h-8 w-auto lg:h-9" mono={inverse} />
+    <span className="font-display text-lg font-extrabold uppercase tracking-[0.2em] text-white lg:text-xl">
+      Performance
+    </span>
   </div>
 );
 

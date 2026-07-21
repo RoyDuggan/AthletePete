@@ -141,7 +141,7 @@ const SubscriptionPage: React.FC = () => {
               <p className="mt-1 text-sm text-gray-400">{p.blurb}</p>
               <p className="mt-3 text-2xl font-extrabold text-brand">
                 {p.price}
-                <span className="text-sm font-bold text-gray-500">{p.interval}</span>
+                <span className="text-sm font-bold text-muted">{p.interval}</span>
               </p>
 
               <ul className="mt-4 flex-1 space-y-2">

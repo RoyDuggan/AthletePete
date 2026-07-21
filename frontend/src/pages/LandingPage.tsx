@@ -15,7 +15,7 @@ const HERO_BG: React.CSSProperties = {
 };
 
 /**
- * Split-screen home: D+R Athletic Development marketing (left, over the athlete
+ * Split-screen home: DR Performance marketing (left, over the athlete
  * hero) and account registration (right). The whole home page is the sign-up
  * funnel.
  */
@@ -76,7 +76,7 @@ const LandingPage: React.FC = () => {
           <ul className="mt-7 space-y-2 text-sm text-gray-300">
             {[
               "Personalised plan from a short questionnaire",
-              "Coach-curated and adapted every week",
+              "Coach-approved and adapted every week",
               "Built around your sport, level and goals",
             ].map((f) => (
               <li key={f} className="flex items-center gap-3">
@@ -88,7 +88,7 @@ const LandingPage: React.FC = () => {
         </div>
 
         <p className="mt-10 font-oswald text-[10px] uppercase tracking-[0.2em] text-muted">
-          © D+R Athletic Development
+          © DR Performance
         </p>
       </div>
 

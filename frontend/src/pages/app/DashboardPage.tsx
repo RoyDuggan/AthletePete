@@ -31,23 +31,23 @@ const DashboardPage: React.FC = () => {
       {/* Account summary */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className={appPanel}>
-          <p className="text-xs uppercase tracking-wide text-gray-500">Account</p>
+          <p className="text-xs uppercase tracking-wide text-muted">Account</p>
           <p className="mt-1 truncate text-sm font-bold text-white" title={user?.email}>
             {user?.email}
           </p>
         </div>
         <div className={appPanel}>
-          <p className="text-xs uppercase tracking-wide text-gray-500">Plan</p>
+          <p className="text-xs uppercase tracking-wide text-muted">Plan</p>
           <p className="mt-1 text-sm font-bold text-brand">{TIER_LABEL[tier]}</p>
         </div>
         <div className={appPanel}>
-          <p className="text-xs uppercase tracking-wide text-gray-500">Access</p>
+          <p className="text-xs uppercase tracking-wide text-muted">Access</p>
           <p className="mt-1 text-sm font-bold text-white">
             {isSubscriber ? "Full" : trialActive(user) ? "Trial" : "Limited"}
           </p>
         </div>
         <div className={appPanel}>
-          <p className="text-xs uppercase tracking-wide text-gray-500">
+          <p className="text-xs uppercase tracking-wide text-muted">
             {isSubscriber ? "Billing" : "Trial"}
           </p>
           <p className="mt-1 text-sm font-bold text-white">
@@ -89,7 +89,7 @@ const DashboardPage: React.FC = () => {
               <span className="text-sm font-extrabold uppercase tracking-wide text-white group-hover:text-brand">
                 {link.label}
               </span>
-              <span className="text-gray-500">{locked ? "🔒" : "→"}</span>
+              <span className="text-muted">{locked ? "🔒" : "→"}</span>
             </Link>
           );
         })}

@@ -25,8 +25,8 @@ const SiteFooter: React.FC = () => (
           {link.label}
         </Link>
       ))}
-      <span className="text-[11px] uppercase tracking-wide text-gray-500">
-        © D+R Athletic Development
+      <span className="text-[11px] uppercase tracking-wide text-muted">
+        © DR Performance
       </span>
     </div>
   </footer>

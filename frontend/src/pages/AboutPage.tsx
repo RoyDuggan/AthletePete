@@ -15,7 +15,7 @@ const AboutPage: React.FC = () => (
           Athletic development, done properly.
         </h1>
         <p className="mt-6 text-base leading-relaxed text-gray-300">
-          D+R Athletic Development builds individualised training programmes for
+          DR Performance builds individualised training programmes for
           serious athletes. We pair AI-generated planning with the judgement of
           professional coaches — so every athlete gets a plan built around their
           sport, their body, their goals and their real-world schedule, not a
@@ -37,7 +37,7 @@ const AboutPage: React.FC = () => (
           },
           {
             k: "Coach-led",
-            d: "AI does the heavy lifting; a professional coach curates and signs off every programme.",
+            d: "AI does the heavy lifting; a professional coach approves and signs off every programme.",
           },
           {
             k: "Adaptive",

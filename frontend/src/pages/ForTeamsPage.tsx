@@ -34,7 +34,7 @@ const ForTeamsPage: React.FC = () => (
           Develop the whole squad.
         </h1>
         <p className="mt-6 text-base leading-relaxed text-gray-300">
-          Give every athlete an individualised, coach-curated programme — with the
+          Give every athlete an individualised, coach-approved programme — with the
           oversight, consistency and reporting a team or organisation needs.
         </p>
       </div>

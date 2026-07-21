@@ -17,7 +17,7 @@ const AccessGate: React.FC<{ from?: string }> = ({ from }) => (
           🔒
         </div>
         <h1 className="mt-6 text-2xl font-extrabold uppercase tracking-wide text-white md:text-3xl">
-          Register free to unlock your D+R Athletic Development Race Hub.
+          Register free to unlock your DR Performance Race Hub.
         </h1>
         <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-gray-400">
           Your Race Hub gives you access to AI telemetry analytics, kart setup
@@ -41,7 +41,7 @@ const AccessGate: React.FC<{ from?: string }> = ({ from }) => (
 
         <Link
           to="/"
-          className={`mt-6 inline-block text-xs font-bold uppercase tracking-wide text-gray-500 hover:text-gray-300 ${focusRing}`}
+          className={`mt-6 inline-block text-xs font-bold uppercase tracking-wide text-muted hover:text-gray-300 ${focusRing}`}
         >
           ← Back to home
         </Link>

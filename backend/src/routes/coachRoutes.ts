@@ -22,10 +22,14 @@ import {
  */
 const router = Router();
 
-/** Roster: athletes (non-coach users) who have a profile and/or a plan. */
-router.get("/athletes", async (_req: AuthedRequest, res) => {
+/**
+ * Roster: athletes (non-coach users) who have a profile and/or a plan, plus the
+ * coach themselves — so a coach can also generate and approve a program for
+ * their own athlete profile.
+ */
+router.get("/athletes", async (req: AuthedRequest, res) => {
   const users = await prisma.user.findMany({
-    where: { driverAdmin: false },
+    where: { OR: [{ driverAdmin: false }, { id: req.userId }] },
     select: { id: true, email: true, fullName: true },
   });
   const statuses = listPlanStatuses();

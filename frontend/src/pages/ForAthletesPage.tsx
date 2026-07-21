@@ -10,7 +10,7 @@ const POINTS = [
     d: "Answer the intake questionnaire once. Your programme is built from your position, level, training history, equipment and honest weekly availability.",
   },
   {
-    k: "Curated by a real coach",
+    k: "Approved by a real coach",
     d: "The AI drafts it; a professional coach reviews, adjusts and approves it before it reaches you. You get expertise, faster.",
   },
   {
@@ -34,7 +34,7 @@ const ForAthletesPage: React.FC = () => (
           Your off-season, <span className="text-brand">engineered.</span>
         </h1>
         <p className="mt-6 text-base leading-relaxed text-gray-300">
-          Stop guessing. Get an individualised, coach-curated training programme
+          Stop guessing. Get an individualised, coach-approved training programme
           that's built around your game and your life — and adapts as you train.
         </p>
       </div>
