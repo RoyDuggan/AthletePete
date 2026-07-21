@@ -8,9 +8,11 @@ import path from 'path';
 import authRoutes from './routes/authRoutes';
 import accountRoutes from './routes/accountRoutes';
 import athleteRoutes from './routes/athleteRoutes';
+import coachRoutes from './routes/coachRoutes';
 import billingRoutes, { handleStripeWebhook } from './routes/billingRoutes';
 import { checkDatabase } from './db';
 import { requireAuth } from './middleware/requireAuth';
+import { requireCoach } from './middleware/requireCoach';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
@@ -88,6 +90,7 @@ app.use('/api/auth', authRoutes);
 // Everything below requires an authenticated user.
 app.use('/api/billing', requireAuth, billingRoutes);
 app.use('/api/account', requireAuth, accountRoutes);
+app.use('/api/coach', requireAuth, requireCoach, coachRoutes);
 app.use('/api', requireAuth, athleteRoutes);
 
 const server = app.listen(PORT, () => {

@@ -102,10 +102,10 @@ const SettingsPage: React.FC = () => {
           </span>
         </div>
         <div className={rowCls}>
-          <span className={labelCls}>Driver Admin</span>
+          <span className={labelCls}>Coach</span>
           <span
             className="font-semibold text-white"
-            title="Grants the AI-framing prompt editor on Driver Setup. Managed by the site admin — not user-configurable."
+            title="Grants access to the Coach review area. Managed by the site admin — not user-configurable."
           >
             {user?.driverAdmin ? "Yes" : "No"}
           </span>

@@ -60,3 +60,13 @@ export function saveTrainingPlan(
 export function deleteTrainingPlan(userId: string): void {
   writeAll(readAll().filter((x) => x.userId !== userId));
 }
+
+/** userId → plan status summary, for the coach roster (single read). */
+export function listPlanStatuses(): Record<
+  string,
+  { status: TrainingPlan["status"]; generatedAt: number }
+> {
+  const out: Record<string, { status: TrainingPlan["status"]; generatedAt: number }> = {};
+  for (const r of readAll()) out[r.userId] = { status: r.status, generatedAt: r.generatedAt };
+  return out;
+}

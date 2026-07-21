@@ -19,7 +19,9 @@ const DashboardPage: React.FC = () => {
       )
     : 0;
 
-  const tiles = APP_NAV_LINKS.filter((l) => l.to !== "/app/dashboard");
+  const tiles = APP_NAV_LINKS.filter(
+    (l) => l.to !== "/app/dashboard" && (!l.coachOnly || user?.driverAdmin)
+  );
 
   return (
     <AppPage

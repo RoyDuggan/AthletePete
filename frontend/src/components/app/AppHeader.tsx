@@ -8,13 +8,20 @@ import { type Feature, getTier, hasFeature, TIER_LABEL } from "../../lib/tiers";
 
 /** Signed-in app navigation, shown in place of the public marketing nav. */
 
-type AppNavLink = { label: string; to: string; feature?: Feature };
+type AppNavLink = {
+  label: string;
+  to: string;
+  feature?: Feature;
+  /** Only shown to coaches (driverAdmin flag). */
+  coachOnly?: boolean;
+};
 
 export const APP_NAV_LINKS: AppNavLink[] = [
   { label: "Dashboard", to: "/app/dashboard" },
   { label: "Athlete Profile", to: "/app/profile", feature: "profile" },
   { label: "Training Calendar", to: "/app/calendar", feature: "calendar" },
   { label: "Coaching", to: "/app/coaching", feature: "coaching" },
+  { label: "Coach", to: "/app/coach", coachOnly: true },
   { label: "Subscription", to: "/app/subscription" },
   { label: "Settings", to: "/app/settings" },
 ];
@@ -32,6 +39,7 @@ const AppHeader: React.FC = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const tier = getTier(user);
+  const links = APP_NAV_LINKS.filter((l) => !l.coachOnly || user?.driverAdmin);
 
   const handleLogout = async () => {
     setMenuOpen(false);
@@ -86,7 +94,7 @@ const AppHeader: React.FC = () => {
       <nav className="border-b border-white/10 bg-ink">
         {/* Desktop tab row */}
         <div className={`${container} hidden gap-5 overflow-x-auto pt-2 lg:flex xl:gap-7`}>
-          {APP_NAV_LINKS.map((link) => {
+          {links.map((link) => {
             const locked = link.feature ? !hasFeature(user, link.feature) : false;
             return (
               <NavLink key={link.to} to={link.to} className={tabClass} end={false}>
@@ -125,7 +133,7 @@ const AppHeader: React.FC = () => {
       {/* Mobile dropdown (< lg) */}
       {menuOpen && (
         <nav className="border-b border-white/10 bg-ink lg:hidden">
-          {APP_NAV_LINKS.map((link) => {
+          {links.map((link) => {
             const locked = link.feature ? !hasFeature(user, link.feature) : false;
             return (
               <NavLink

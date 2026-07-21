@@ -20,6 +20,7 @@ import DashboardPage from "./pages/app/DashboardPage";
 import AthleteProfilePage from "./pages/app/AthleteProfilePage";
 import CalendarPage from "./pages/app/CalendarPage";
 import CoachingPage from "./pages/app/CoachingPage";
+import CoachPage from "./pages/app/CoachPage";
 import SubscriptionPage from "./pages/app/SubscriptionPage";
 import SettingsPage from "./pages/app/SettingsPage";
 
@@ -57,6 +58,7 @@ const App: React.FC = () => (
           <Route path="profile" element={<AthleteProfilePage />} />
           <Route path="calendar" element={<CalendarPage />} />
           <Route path="coaching" element={<CoachingPage />} />
+          <Route path="coach" element={<CoachPage />} />
           <Route path="subscription" element={<SubscriptionPage />} />
           <Route path="settings" element={<SettingsPage />} />
         </Route>

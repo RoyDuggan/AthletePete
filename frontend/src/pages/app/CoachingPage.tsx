@@ -57,8 +57,10 @@ const CoachingPage: React.FC = () => {
               </p>
               {plan && (
                 <p className="mt-1 text-xs text-muted">
-                  Generated {new Date(plan.generatedAt).toLocaleDateString()} ·
-                  status: {plan.status} · pending coach review
+                  Generated {new Date(plan.generatedAt).toLocaleDateString()} ·{" "}
+                  {plan.status === "generated"
+                    ? "pending coach review"
+                    : "reviewed by your coach ✓"}
                 </p>
               )}
             </div>
