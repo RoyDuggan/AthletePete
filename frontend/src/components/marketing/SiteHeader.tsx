@@ -9,9 +9,6 @@ import { container, focusRing } from "./ui";
 
 export const NAV_LINKS: { label: string; to: string }[] = [
   { label: "Home", to: "/" },
-  { label: "For Drivers", to: "/drivers" },
-  { label: "For Parents", to: "/parents" },
-  { label: "For Teams", to: "/teams" },
   { label: "Pricing", to: "/pricing" },
 ];
 

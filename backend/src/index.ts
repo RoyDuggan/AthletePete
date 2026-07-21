@@ -5,13 +5,7 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import path from 'path';
-import uploadRoutes from './routes/uploadRoutes';
 import authRoutes from './routes/authRoutes';
-import kartRoutes from './routes/kartRoutes';
-import jettingRoutes from './routes/jettingRoutes';
-import sessionRoutes from './routes/sessionRoutes';
-import fingerprintRoutes from './routes/fingerprintRoutes';
-import driverRoutes from './routes/driverRoutes';
 import accountRoutes from './routes/accountRoutes';
 import billingRoutes, { handleStripeWebhook } from './routes/billingRoutes';
 import { checkDatabase } from './db';
@@ -39,8 +33,8 @@ app.use(
     })
 );
 
-// Lenient global backstop against abuse (generous, so heavy legitimate use —
-// multi-zone analysis makes many calls — isn't throttled).
+// Lenient global backstop against abuse (generous, so legitimate use isn't
+// throttled).
 const globalLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     limit: 1000,
@@ -90,18 +84,9 @@ app.use('/api/auth/reset-password', authLimiter);
 app.use('/api/auth/verify-email', authLimiter);
 app.use('/api/auth', authRoutes);
 
-// Jetting Advisor is a stateless baseline calculator over static engine
-// profiles — no user data, so it's public (the page that uses it is gated).
-app.use('/api/jetting', jettingRoutes);
-
 // Everything below requires an authenticated user.
-app.use('/api/karts', requireAuth, kartRoutes);
-app.use('/api/sessions', requireAuth, sessionRoutes);
-app.use('/api/fingerprint', requireAuth, fingerprintRoutes);
 app.use('/api/billing', requireAuth, billingRoutes);
 app.use('/api/account', requireAuth, accountRoutes);
-app.use('/api', requireAuth, driverRoutes);
-app.use('/api', requireAuth, uploadRoutes);
 
 const server = app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

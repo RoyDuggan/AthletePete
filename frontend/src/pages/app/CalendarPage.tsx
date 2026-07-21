@@ -4,26 +4,28 @@ import { useAuth } from "../../context/AuthContext";
 import { AppPage, ComingSoon, UpgradeNotice } from "../../components/app/AppPage";
 import { hasFeature } from "../../lib/tiers";
 
-/** Race calendar. Premium feature (Trial and paid tiers). */
+/** Training calendar — the athlete's curated workout plan, week by week. */
 const CalendarPage: React.FC = () => {
   const { user } = useAuth();
 
   if (!hasFeature(user, "calendar")) {
     return (
-      <AppPage title="Calendar" subtitle="Plan your race weekends and test days.">
-        <UpgradeNotice feature="Calendar" />
+      <AppPage title="Training" accent="Calendar" subtitle="Your weekly training plan.">
+        <UpgradeNotice feature="Training Calendar" />
       </AppPage>
     );
   }
 
   return (
     <AppPage
-      title="Calendar"
-      subtitle="Plan your race weekends, test days and championship rounds."
+      title="Training"
+      accent="Calendar"
+      subtitle="Your coach-curated training plan, laid out week by week."
     >
       <ComingSoon>
-        Your race calendar is coming soon. You'll be able to add events, link
-        sessions and telemetry to each round, and track results over the season.
+        Your training calendar is being built. It will show your AI-generated,
+        coach-curated workouts (on-ice, strength, conditioning, recovery) by day,
+        with completion tracking and weekly reviews.
       </ComingSoon>
     </AppPage>
   );

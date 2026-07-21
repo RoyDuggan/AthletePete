@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import { container, focusRing } from "./ui";
 
 const FOOTER_LINKS: { label: string; to: string }[] = [
-  { label: "About", to: "/how-it-works" },
+  { label: "Pricing", to: "/pricing" },
   { label: "Terms", to: "/terms" },
   { label: "Privacy", to: "/privacy" },
-  { label: "FAQ", to: "/how-it-works" },
 ];
 
 /** Shared dark footer with lime links, used on every page. */

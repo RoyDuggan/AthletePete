@@ -9,13 +9,10 @@ import type { AuthUser } from "../api/auth";
  */
 
 export type Feature =
-  | "driver" // driver profile setup
-  | "kart" // kart details
-  | "jetting" // jetting / tuning tools
-  | "calendar" // race calendar
-  | "telemetry" // telemetry upload + analysis
-  | "coaching" // AthletePete AI coaching
-  | "team"; // multi-driver / team workspace
+  | "profile" // athlete intake questionnaire
+  | "calendar" // training calendar / plan
+  | "coaching" // AI coaching + plan generation
+  | "team"; // team / multi-athlete workspace
 
 export type TierKey = "free" | "trial" | "individual" | "team";
 
@@ -26,11 +23,11 @@ export const TIER_LABEL: Record<TierKey, string> = {
   team: "Team",
 };
 
-/** Free tier: setup tools only, no payment. */
-const FREE_FEATURES: Feature[] = ["driver", "kart", "jetting"];
+/** Free tier: profile only, no payment. */
+const FREE_FEATURES: Feature[] = ["profile"];
 
-/** Premium analysis features unlocked by Trial / paid tiers. */
-const PREMIUM_FEATURES: Feature[] = [...FREE_FEATURES, "calendar", "telemetry", "coaching"];
+/** Premium features unlocked by Trial / paid tiers. */
+const PREMIUM_FEATURES: Feature[] = [...FREE_FEATURES, "calendar", "coaching"];
 
 export const TIER_FEATURES: Record<TierKey, Feature[]> = {
   free: FREE_FEATURES,

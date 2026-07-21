@@ -39,9 +39,9 @@ const DashboardPage: React.FC = () => {
           <p className="mt-1 text-sm font-bold text-brand">{TIER_LABEL[tier]}</p>
         </div>
         <div className={appPanel}>
-          <p className="text-xs uppercase tracking-wide text-gray-500">Upload credits</p>
+          <p className="text-xs uppercase tracking-wide text-gray-500">Access</p>
           <p className="mt-1 text-sm font-bold text-white">
-            {isSubscriber ? "Unlimited" : user?.creditsRemaining ?? 0}
+            {isSubscriber ? "Full" : trialActive(user) ? "Trial" : "Limited"}
           </p>
         </div>
         <div className={appPanel}>
@@ -63,7 +63,7 @@ const DashboardPage: React.FC = () => {
           <span>
             {tier === "trial"
               ? "You're on a free trial with full access to premium features."
-              : "You're on the free plan — driver, kart and jetting tools are included."}
+              : "You're on the free plan — your athlete profile is included."}
           </span>
           <Link
             to="/app/subscription"

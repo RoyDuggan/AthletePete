@@ -12,11 +12,8 @@ type AppNavLink = { label: string; to: string; feature?: Feature };
 
 export const APP_NAV_LINKS: AppNavLink[] = [
   { label: "Dashboard", to: "/app/dashboard" },
-  { label: "Driver Setup", to: "/app/driver", feature: "driver" },
-  { label: "Kart Setup", to: "/app/kart", feature: "kart" },
-  { label: "Jetting Advisor", to: "/app/jetting", feature: "jetting" },
-  { label: "Calendar", to: "/app/calendar", feature: "calendar" },
-  { label: "Telemetry", to: "/app/telemetry", feature: "telemetry" },
+  { label: "Athlete Profile", to: "/app/profile", feature: "profile" },
+  { label: "Training Calendar", to: "/app/calendar", feature: "calendar" },
   { label: "Coaching", to: "/app/coaching", feature: "coaching" },
   { label: "Subscription", to: "/app/subscription" },
   { label: "Settings", to: "/app/settings" },
