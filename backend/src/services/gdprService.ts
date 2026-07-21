@@ -1,5 +1,9 @@
 import { prisma } from "../db";
 import { cancelSubscriptionImmediately } from "./billingService";
+import {
+  getAthleteProfile,
+  deleteAthleteProfile,
+} from "./athleteProfileStore";
 
 /**
  * GDPR subject-access (export) and erasure (delete).
@@ -35,6 +39,7 @@ export async function exportUserData(userId: string): Promise<unknown> {
   return {
     exportedAt: new Date().toISOString(),
     account: user,
+    athleteProfile: getAthleteProfile(userId),
   };
 }
 
@@ -56,5 +61,6 @@ export async function deleteUserAccount(userId: string): Promise<void> {
     console.error("GDPR delete: Stripe cancel failed (continuing):", e);
   }
 
+  deleteAthleteProfile(userId);
   await prisma.user.delete({ where: { id: userId } });
 }

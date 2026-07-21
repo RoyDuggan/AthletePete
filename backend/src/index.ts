@@ -7,6 +7,7 @@ import rateLimit from 'express-rate-limit';
 import path from 'path';
 import authRoutes from './routes/authRoutes';
 import accountRoutes from './routes/accountRoutes';
+import athleteRoutes from './routes/athleteRoutes';
 import billingRoutes, { handleStripeWebhook } from './routes/billingRoutes';
 import { checkDatabase } from './db';
 import { requireAuth } from './middleware/requireAuth';
@@ -87,6 +88,7 @@ app.use('/api/auth', authRoutes);
 // Everything below requires an authenticated user.
 app.use('/api/billing', requireAuth, billingRoutes);
 app.use('/api/account', requireAuth, accountRoutes);
+app.use('/api', requireAuth, athleteRoutes);
 
 const server = app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
