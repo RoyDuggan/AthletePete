@@ -55,7 +55,7 @@ const wrap = (heading: string, body: string, cta: { label: string; url: string }
       <a href="${cta.url}" style="background:#a6e22e;color:#000;font-weight:bold;text-decoration:none;padding:12px 22px;border-radius:8px;display:inline-block">${cta.label}</a>
     </p>
     <p style="font-size:12px;color:#6b7280;line-height:1.6">If the button doesn't work, copy this link into your browser:<br>${cta.url}</p>
-    <p style="font-size:12px;color:#6b7280">— AthletePete</p>
+    <p style="font-size:12px;color:#6b7280">— DR Performance</p>
   </div>`;
 
 export async function sendVerificationEmail(
@@ -66,11 +66,11 @@ export async function sendVerificationEmail(
   const hi = name ? `Hi ${name},` : "Hi,";
   await send({
     to,
-    subject: "Verify your AthletePete email address",
-    text: `${hi}\n\nThanks for creating your AthletePete account. Confirm your email address using this link (expires in 24 hours):\n\n${url}\n\nIf you didn't sign up, you can ignore this email.\n\n— AthletePete`,
+    subject: "Verify your DR Performance email address",
+    text: `${hi}\n\nThanks for creating your DR Performance account. Confirm your email address using this link (expires in 24 hours):\n\n${url}\n\nIf you didn't sign up, you can ignore this email.\n\n— DR Performance`,
     html: wrap(
       "Confirm your email",
-      `${hi} thanks for creating your AthletePete account. Please confirm your email address — this link expires in 24 hours. If you didn't sign up, you can ignore this email.`,
+      `${hi} thanks for creating your DR Performance account. Please confirm your email address — this link expires in 24 hours. If you didn't sign up, you can ignore this email.`,
       { label: "Verify email address", url }
     ),
   });
@@ -84,11 +84,11 @@ export async function sendPasswordResetEmail(
   const hi = name ? `Hi ${name},` : "Hi,";
   await send({
     to,
-    subject: "Reset your AthletePete password",
-    text: `${hi}\n\nWe received a request to reset your AthletePete password. Choose a new one using this link (expires in 1 hour):\n\n${url}\n\nIf you didn't request this, no action is needed and your password stays the same.\n\n— AthletePete`,
+    subject: "Reset your DR Performance password",
+    text: `${hi}\n\nWe received a request to reset your DR Performance password. Choose a new one using this link (expires in 1 hour):\n\n${url}\n\nIf you didn't request this, no action is needed and your password stays the same.\n\n— DR Performance`,
     html: wrap(
       "Reset your password",
-      `${hi} we received a request to reset your AthletePete password. This link expires in 1 hour. If you didn't request this, no action is needed and your password stays the same.`,
+      `${hi} we received a request to reset your DR Performance password. This link expires in 1 hour. If you didn't request this, no action is needed and your password stays the same.`,
       { label: "Reset password", url }
     ),
   });

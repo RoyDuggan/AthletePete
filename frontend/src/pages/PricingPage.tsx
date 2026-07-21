@@ -69,7 +69,7 @@ const PricingPage: React.FC = () => (
               key={plan.name}
               className={`flex flex-col rounded-lg border bg-panel p-7 transition duration-300 hover:scale-[1.02] ${
                 plan.featured
-                  ? "border-brand shadow-[0_0_0_1px_#a6e22e]"
+                  ? "border-brand shadow-[0_0_0_1px_#1672CB]"
                   : "border-white/10 hover:border-brand/40"
               }`}
             >

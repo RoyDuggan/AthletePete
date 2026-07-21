@@ -128,7 +128,7 @@ const SubscriptionPage: React.FC = () => {
               key={p.plan}
               className={`flex flex-col rounded-lg border bg-panel p-6 ${
                 p.featured ? "border-brand/60" : "border-white/10"
-              } ${isCurrent ? "shadow-[0_0_0_1px_#a6e22e]" : ""}`}
+              } ${isCurrent ? "shadow-[0_0_0_1px_#1672CB]" : ""}`}
             >
               {isCurrent && (
                 <span className="mb-3 inline-block w-fit rounded-full bg-brand px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-black">

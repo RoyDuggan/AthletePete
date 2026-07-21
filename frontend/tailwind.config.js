@@ -8,13 +8,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Spec dark theme palette.
-        brand: "#a6e22e", // lime accent
-        ink: "#030303", // page background
-        panel: "#151515", // dark sections / cards
-        steel: "#3a3a3a", // button background
+        // DR Performance dark theme palette (near-black + performance blue).
+        brand: "#1672CB", // performance blue accent
+        ink: "#11151A", // near-black page background
+        panel: "#171c23", // dark sections / cards
+        steel: "#232a33", // button background
         mist: "#f5f7fa", // light form inputs / light cards
-        "hero-blue": "#4b7cc4",
+        "hero-blue": "#32A8FF", // bright blue (hover / secondary accent)
       },
       keyframes: {
         shake: {

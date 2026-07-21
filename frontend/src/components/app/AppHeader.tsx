@@ -52,18 +52,18 @@ const AppHeader: React.FC = () => {
           <Link
             to="/app/dashboard"
             className={`flex items-center ${focusRing}`}
-            aria-label="AthletePete dashboard"
+            aria-label="DR Performance dashboard"
           >
-            <img src={logoUrl} alt="AthletePete" className="h-9 w-auto lg:h-11" />
+            <img src={logoUrl} alt="DR Performance" className="h-9 w-auto lg:h-11" />
           </Link>
 
           <div className="flex items-center gap-3">
-            <span className="hidden rounded-full border border-black/30 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-black sm:inline">
+            <span className="hidden rounded-full border border-white/30 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white sm:inline">
               {TIER_LABEL[tier]} plan
             </span>
             {user && (
               <span
-                className="hidden max-w-[180px] truncate text-xs font-bold text-black/80 md:inline"
+                className="hidden max-w-[180px] truncate text-xs font-bold text-white/80 md:inline"
                 title={user.email}
               >
                 {user.email}
@@ -72,7 +72,7 @@ const AppHeader: React.FC = () => {
             <button
               type="button"
               onClick={handleLogout}
-              className={`rounded-md border border-black px-4 py-2 text-xs font-bold uppercase tracking-wide text-black transition-transform duration-300 hover:scale-105 ${focusRing}`}
+              className={`rounded-md border border-white/60 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-transform duration-300 hover:scale-105 ${focusRing}`}
             >
               Sign Out
             </button>

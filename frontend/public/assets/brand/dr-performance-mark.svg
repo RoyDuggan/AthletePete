@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="DR Performance icon">
+<defs><linearGradient id="b" x1="0" x2="1"><stop offset="0" stop-color="#32A8FF"/><stop offset="1" stop-color="#0866C6"/></linearGradient></defs>
+<path d="M10 28h96c58 0 91 30 91 68s-33 68-91 68H10V28zm44 38v60h50c29 0 47-11 47-30s-18-30-47-30H54z" fill="#11151A"/>
+<path d="M120 28h92c51 0 81 24 81 62 0 27-15 47-43 57l58 47h-65l-51-42h-28v42h-44V28zm44 37v51h45c26 0 40-9 40-26s-14-25-40-25h-45z" fill="url(#b)"/>
+</svg>

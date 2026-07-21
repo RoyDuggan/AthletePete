@@ -25,9 +25,9 @@ export const ctaButton =
   "inline-flex items-center justify-center rounded-3xl bg-steel px-7 py-3 text-sm font-bold uppercase tracking-wide text-brand transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-[#2a2a2a] " +
   focusRing;
 
-/** Solid lime CTA (for strong primary actions, e.g. form submit). */
+/** Solid brand CTA (for strong primary actions, e.g. form submit). */
 export const ctaButtonLime =
-  "inline-flex items-center justify-center rounded-3xl bg-brand px-7 py-3 text-sm font-bold uppercase tracking-wide text-black transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] " +
+  "inline-flex items-center justify-center rounded-3xl bg-brand px-7 py-3 text-sm font-bold uppercase tracking-wide text-white transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-hero-blue " +
   focusRing;
 
 /** Light card on the dark page (Example Outputs / Kart Setup). */

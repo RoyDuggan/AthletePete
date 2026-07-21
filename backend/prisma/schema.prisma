@@ -1,4 +1,4 @@
-// AthletePete — production data model (Phase 0 foundation).
+// DR Performance — production data model (Phase 0 foundation).
 //
 // Self-hosted auth (email + password), PostgreSQL. Free tier: 30-day trial +
 // usage credits, max 100 sessions and 2 karts. Billing/Stripe fields are kept

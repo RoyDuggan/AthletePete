@@ -21,3 +21,6 @@ backend/data/*
 
 # Local backup archives (never commit these).
 backups/
+
+# Raw design asset bundles (used assets are copied into frontend/public)
+chatgptresources/

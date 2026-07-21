@@ -14,7 +14,7 @@ export const NAV_LINKS: { label: string; to: string }[] = [
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `text-[13px] font-bold uppercase tracking-wide transition-colors duration-300 ${
-    isActive ? "text-black underline underline-offset-4" : "text-black/80 hover:text-black"
+    isActive ? "text-white underline underline-offset-4" : "text-white/80 hover:text-white"
   } ${focusRing}`;
 
 const SiteHeader: React.FC = () => {
@@ -34,9 +34,9 @@ const SiteHeader: React.FC = () => {
         <Link
           to="/"
           className={`flex items-center ${focusRing}`}
-          aria-label="AthletePete home"
+          aria-label="DR Performance home"
         >
-          <img src={logoUrl} alt="AthletePete" className="h-9 w-auto lg:h-11" />
+          <img src={logoUrl} alt="DR Performance" className="h-9 w-auto lg:h-11" />
         </Link>
 
         {/* Desktop nav (>= lg) */}
@@ -57,14 +57,14 @@ const SiteHeader: React.FC = () => {
             <div className="hidden items-center gap-3 lg:flex">
               <Link
                 to="/app/dashboard"
-                className={`text-xs font-bold uppercase tracking-wide text-black/80 hover:text-black ${focusRing}`}
+                className={`text-xs font-bold uppercase tracking-wide text-white/80 hover:text-white ${focusRing}`}
               >
                 Dashboard
               </Link>
               <button
                 type="button"
                 onClick={handleLogout}
-                className={`rounded-md border border-black px-4 py-2 text-xs font-bold uppercase tracking-wide text-black transition-transform duration-300 hover:scale-105 ${focusRing}`}
+                className={`rounded-md border border-white/60 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-transform duration-300 hover:scale-105 ${focusRing}`}
               >
                 Sign Out
               </button>
@@ -72,7 +72,7 @@ const SiteHeader: React.FC = () => {
           ) : (
             <Link
               to="/sign-in"
-              className={`rounded-md border border-black px-4 py-2 text-xs font-bold uppercase tracking-wide text-black transition-transform duration-300 hover:scale-105 ${focusRing}`}
+              className={`rounded-md border border-white/60 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-transform duration-300 hover:scale-105 ${focusRing}`}
             >
               Sign In
             </Link>
@@ -86,16 +86,16 @@ const SiteHeader: React.FC = () => {
             onClick={() => setMenuOpen((open) => !open)}
             className={`flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded transition-transform duration-300 hover:scale-105 lg:hidden ${focusRing}`}
           >
-            <span className="block h-0.5 w-6 bg-black" />
-            <span className="block h-0.5 w-6 bg-black" />
-            <span className="block h-0.5 w-6 bg-black" />
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-white" />
           </button>
         </div>
       </div>
 
       {/* Mobile / tablet dropdown (< lg) */}
       {menuOpen && (
-        <nav className="absolute left-0 right-0 top-full z-40 border-t border-black/10 bg-brand shadow-lg lg:hidden">
+        <nav className="absolute left-0 right-0 top-full z-40 border-t border-white/10 bg-brand shadow-lg lg:hidden">
           {NAV_LINKS.map((link) => (
             <NavLink
               key={link.label}
@@ -103,7 +103,7 @@ const SiteHeader: React.FC = () => {
               end={link.to === "/"}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `block px-6 py-3 text-left text-sm font-bold uppercase tracking-wide text-black transition-colors duration-300 hover:bg-black/10 ${
+                `block px-6 py-3 text-left text-sm font-bold uppercase tracking-wide text-white transition-colors duration-300 hover:bg-black/10 ${
                   isActive ? "bg-black/5" : ""
                 } ${focusRing}`
               }
@@ -112,7 +112,7 @@ const SiteHeader: React.FC = () => {
             </NavLink>
           ))}
           {user && (
-            <div className="flex gap-2 border-t border-black/10 px-6 py-3">
+            <div className="flex gap-2 border-t border-white/10 px-6 py-3">
               <Link
                 to="/app/dashboard"
                 onClick={() => setMenuOpen(false)}
@@ -123,7 +123,7 @@ const SiteHeader: React.FC = () => {
               <button
                 type="button"
                 onClick={handleLogout}
-                className={`flex-1 rounded-md border border-black px-4 py-2 text-center text-xs font-bold uppercase tracking-wide text-black ${focusRing}`}
+                className={`flex-1 rounded-md border border-white/60 px-4 py-2 text-center text-xs font-bold uppercase tracking-wide text-white ${focusRing}`}
               >
                 Sign Out
               </button>
